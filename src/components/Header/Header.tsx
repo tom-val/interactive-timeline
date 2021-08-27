@@ -1,11 +1,16 @@
 import React from 'react';
 import './Header.css';
 
-export default function Header() {
+interface HeaderProps {
+  header: string;
+  subHeader: string;
+}
+
+export default function Header(prop: HeaderProps) {
   return (
     <div className="container">
-      <div className="header">Tomas Valiūnas</div>
-      <div className="sub-header">Timeline</div>
+      <div className="header">{prop.header}</div>
+      <div className="sub-header">{prop.subHeader}</div>
     </div>
   );
 }
