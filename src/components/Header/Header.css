@@ -1,0 +1,14 @@
+.container {
+    padding: 2rem;
+  }
+
+.header {
+    font-size:60px;
+    text-align:center;
+    color:darkblue;
+  }
+
+  .sub-header {
+    font-size:30px;
+    text-align:center;
+  }
