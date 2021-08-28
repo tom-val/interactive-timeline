@@ -9,6 +9,7 @@ import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 import './App.css'
+import About from '../About/About'
 
 function App() {
     const [data, setData] = useState<Data | null>(null)
@@ -34,10 +35,7 @@ function App() {
             <NavigationMenu id="back-to-top-anchor"></NavigationMenu>
                 <Switch>
                     <Route path="/about">
-                    <Header
-                        header={"Test"}
-                        subHeader={"test"}
-                    ></Header>
+                    <About></About>
                     </Route>
                     <Route path="/">
                     {data ? (

@@ -335,7 +335,7 @@ function TimeLine() {
 
                 <li>
                     <TimeLineEntry
-                        header="Future prospects"
+                        header="Future"
                         time="Future"
                         even={true}
                         content={['Who knows what the future will bring?']}
