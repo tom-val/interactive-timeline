@@ -1,0 +1,9 @@
+.bottom {
+  height: 3rem;
+}
+
+.title{
+  color:rgba(233,33,99,1);
+  font-weight:600;
+  text-align: center;
+}
