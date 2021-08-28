@@ -4,11 +4,11 @@ import TimeLineDialog from '../TimeLineDialog/TimeLineDialog'
 import './TimeLineEntry.css'
 
 interface TimeLineEntryProps {
-    header: string,
-    time: string,
-    even: boolean,
-    children: React.ReactNode,
-    dialogContent: React.ReactNode,
+    header: string
+    time: string
+    even: boolean
+    content: string[]
+    children: React.ReactNode
 }
 
 function TimeLineEntry(prop: TimeLineEntryProps) {
@@ -38,7 +38,9 @@ function TimeLineEntry(prop: TimeLineEntryProps) {
                 onClick={handleClickOpen}
             >
                 <h3>{prop.header}</h3>
-                <>{prop.children}</>
+                {prop.content.map((content, i) => (
+                    <p>{content}</p>
+                ))}
             </div>
             <div className={`time ${prop.even ? 'even-time' : 'odd-time'}`}>
                 <h4>{prop.time}</h4>
@@ -48,7 +50,7 @@ function TimeLineEntry(prop: TimeLineEntryProps) {
                 open={open}
                 onClose={handleClose}
             >
-              {prop.dialogContent}
+                {prop.children}
             </TimeLineDialog>
         </div>
     )
