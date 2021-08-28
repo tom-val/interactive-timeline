@@ -56,7 +56,6 @@ function TimeLine() {
                         content={[
                           'I studied Informatics Engineering at Kaunas Technology University.',
                           'I studied programming, databases, security, mathematics',
-                          'I finished my Bachelors degree thesis and graduated from university'
                         ]}
                     >
                                 <img src="https://ktu.edu/wp-content/uploads/2016/03/KTU-ikona.svg"></img>
