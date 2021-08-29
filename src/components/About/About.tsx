@@ -12,12 +12,13 @@ import {
     Theme,
     Typography,
 } from '@material-ui/core'
+import {useHistory} from 'react-router-dom';
 import LinkedInIcon from '@material-ui/icons/LinkedIn'
 import GitHubIcon from '@material-ui/icons/GitHub'
 import React from 'react'
 
 import './About.css'
-import { Link } from 'react-router-dom'
+
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         container: {
@@ -37,6 +38,8 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function About() {
     const classes = useStyles()
+    const history = useHistory();
+    const handleOnClick = () => history.push('/');
 
     return (
         <Container className={classes.container}>
@@ -45,9 +48,10 @@ export default function About() {
                     <CardMedia
                         className={classes.media}
                         image="/tomas-valiunas.jpg"
-                        title="Contemplative Reptile"
+                        title="Tomas"
+                        onClick={handleOnClick}
                     />
-                    <CardContent>
+                    <CardContent onClick={handleOnClick}>
                         <Typography variant="h5" component="h2">
                             Tomas Valiūnas
                         </Typography>
@@ -64,14 +68,14 @@ export default function About() {
                             component="p"
                             gutterBottom
                         >
-                            I am very positive person who tries to enjoy every day.
+                            I am very positive person who tries to enjoy every day oh his life.
                         </Typography>
                         <Typography
                             variant="body2"
                             color="textSecondary"
                             component="p"
                         >
-                            I am also full stack Software developer with .NET, Microsoft SQL, Angular and React experience.
+                            Technologies: .NET, Microsoft SQL, Angular and React
                         </Typography>
                     </CardContent>
                     <CardActions disableSpacing>
