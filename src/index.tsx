@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import '@fontsource/roboto';
 import "@fontsource/montserrat";
 
-ReactGA.initialize('G-XEBTLQY6PQ');
+ReactGA.initialize('UA-207121353-1');
 
 ReactDOM.render(
   <React.StrictMode>
