@@ -1,5 +1,4 @@
 import {
-    Avatar,
     Card,
     CardActionArea,
     CardActions,
@@ -12,10 +11,9 @@ import {
     Theme,
     Typography,
 } from '@material-ui/core'
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import LinkedInIcon from '@material-ui/icons/LinkedIn'
 import GitHubIcon from '@material-ui/icons/GitHub'
-import React from 'react'
 
 import './About.css'
 

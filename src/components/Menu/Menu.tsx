@@ -7,7 +7,8 @@ import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 import { AccountCircle } from '@material-ui/icons'
 import MenuDrawer from '../MenuDrawer/MenuDrawer'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import ReactGA from 'react-ga';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -22,26 +23,31 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function NavigationMenu(props: { id?: string }) {
+    let location = useLocation();
+    React.useEffect(() => {
+        ReactGA.send(["pageview", location.pathname]);
+    }, [location]);
+
     const classes = useStyles()
 
     const [drawerState, setState] = React.useState(false);
 
     const closeDrawer = () => (
-      event: React.KeyboardEvent | React.MouseEvent,
+        event: React.KeyboardEvent | React.MouseEvent,
     ) => {
-      if (
-        event.type === 'keydown' &&
-        ((event as React.KeyboardEvent).key === 'Tab' ||
-          (event as React.KeyboardEvent).key === 'Shift')
-      ) {
-        return;
-      }
-  
-      setState(false);
+        if (
+            event.type === 'keydown' &&
+            ((event as React.KeyboardEvent).key === 'Tab' ||
+                (event as React.KeyboardEvent).key === 'Shift')
+        ) {
+            return;
+        }
+
+        setState(false);
     };
 
     const openDrawer = () => {
-      setState(true);
+        setState(true);
     }
 
     return (

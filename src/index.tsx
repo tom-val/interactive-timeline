@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ReactGA from 'react-ga';
 import './index.css';
 import App from './components/App/App';
 import reportWebVitals from './reportWebVitals';
 import '@fontsource/roboto';
 import "@fontsource/montserrat";
+
+ReactGA.initialize('G-XEBTLQY6PQ');
 
 ReactDOM.render(
   <React.StrictMode>

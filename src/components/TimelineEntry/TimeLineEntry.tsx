@@ -39,7 +39,7 @@ function TimeLineEntry(prop: TimeLineEntryProps) {
             >
                 <h3>{prop.header}</h3>
                 {prop.content.map((content, i) => (
-                    <p>{content}</p>
+                    <p key={i}>{content}</p>
                 ))}
             </div>
             <div className={`time ${prop.even ? 'even-time' : 'odd-time'}`}>

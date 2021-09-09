@@ -6,7 +6,7 @@ import NavigationMenu from '../Menu/Menu'
 import { ScrollTop } from '../ScrollTop/ScrollTop'
 import TimeLine from '../Timeline/Timeline'
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import './App.css'
 import About from '../About/About'
@@ -30,34 +30,34 @@ function App() {
     }, [])
 
     return (
-        <>          
+        <>
             <Router>
-            <NavigationMenu id="back-to-top-anchor"></NavigationMenu>
+                <NavigationMenu id="back-to-top-anchor"></NavigationMenu>
                 <Switch>
                     <Route path="/about">
-                    <About></About>
+                        <About></About>
                     </Route>
                     <Route path="/">
-                    {data ? (
-                <>
-                    <Header
-                        header={data.headerData.header}
-                        subHeader={data.headerData.subHeader}
-                    ></Header>
-                    <TimeLine></TimeLine>
-                    <ScrollTop>
-                        <Fab
-                            color="secondary"
-                            size="small"
-                            aria-label="scroll back to top"
-                        >
-                            <KeyboardArrowUpIcon />
-                        </Fab>
-                    </ScrollTop>
-                </>
-            ) : (
-                <span className="center">Loading...</span>
-            )}
+                        {data ? (
+                            <>
+                                <Header
+                                    header={data.headerData.header}
+                                    subHeader={data.headerData.subHeader}
+                                ></Header>
+                                <TimeLine></TimeLine>
+                                <ScrollTop>
+                                    <Fab
+                                        color="secondary"
+                                        size="small"
+                                        aria-label="scroll back to top"
+                                    >
+                                        <KeyboardArrowUpIcon />
+                                    </Fab>
+                                </ScrollTop>
+                            </>
+                        ) : (
+                            <span className="center">Loading...</span>
+                        )}
                     </Route>
                 </Switch>
             </Router>
