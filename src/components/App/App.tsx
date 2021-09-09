@@ -1,5 +1,5 @@
 import { Fab } from '@material-ui/core'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Data } from '../../dto/data'
 import Header from '../Header/Header'
 import NavigationMenu from '../Menu/Menu'

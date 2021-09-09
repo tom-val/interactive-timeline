@@ -25,7 +25,8 @@ const useStyles = makeStyles((theme) => ({
 export default function NavigationMenu(props: { id?: string }) {
     let location = useLocation();
     React.useEffect(() => {
-        ReactGA.send(["pageview", location.pathname]);
+        ReactGA.set({ page: location.pathname });
+        ReactGA.pageview(location.pathname);
     }, [location]);
 
     const classes = useStyles()
