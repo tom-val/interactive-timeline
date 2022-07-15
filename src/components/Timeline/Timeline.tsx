@@ -90,6 +90,7 @@ function TimeLine() {
                     >
                         <div className="image-container">
                             <img
+                                alt="ktu"
                                 className="image"
                                 src="https://ktu.edu/wp-content/uploads/2016/03/KTU-ikona.svg"
                             ></img>
