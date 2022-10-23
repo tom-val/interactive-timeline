@@ -336,9 +336,26 @@ function TimeLine() {
 
                 <li>
                     <TimeLineEntry
+                        header="Railsr"
+                        time="January 2022"
+                        even={true}
+                        content={[
+                            'In the beginning of year 2022 I started working in Railsr company'
+                        ]}
+                    >
+                        <p>
+                            After more than 3 years in Devbridge, I decided it was time for a change,
+                            and started working in banking startup Railsr. It is mainly back end focused role,
+                            focused on banking API. 
+                        </p>
+                    </TimeLineEntry>
+                </li>
+
+                <li>
+                    <TimeLineEntry
                         header="Future"
                         time="Future"
-                        even={true}
+                        even={false}
                         content={['Who knows what the future will bring?']}
                     >
                         <p>
