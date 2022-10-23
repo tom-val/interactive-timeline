@@ -1,5 +1,6 @@
 import gsap from 'gsap'
 import React, { MouseEvent } from 'react'
+import { DialogData } from '../../dto/data'
 import TimeLineDialog from '../TimeLineDialog/TimeLineDialog'
 import './TimeLineEntry.css'
 
@@ -8,7 +9,7 @@ interface TimeLineEntryProps {
     time: string
     even: boolean
     content: string[]
-    children: React.ReactNode
+    dialogData: DialogData[]
 }
 
 function TimeLineEntry(prop: TimeLineEntryProps) {
@@ -48,10 +49,8 @@ function TimeLineEntry(prop: TimeLineEntryProps) {
             <TimeLineDialog
                 title={prop.header}
                 open={open}
-                onClose={handleClose}
-            >
-                {prop.children}
-            </TimeLineDialog>
+                dialogData={prop.dialogData}
+                onClose={handleClose}  />
         </div>
     )
 }

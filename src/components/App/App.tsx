@@ -44,7 +44,7 @@ function App() {
                                     header={data.headerData.header}
                                     subHeader={data.headerData.subHeader}
                                 ></Header>
-                                <TimeLine></TimeLine>
+                                <TimeLine timelineData={data.timelineData}></TimeLine>
                                 <ScrollTop>
                                     <Fab
                                         color="secondary"
