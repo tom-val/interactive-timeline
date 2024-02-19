@@ -73,7 +73,7 @@ export default function About() {
                             color="textSecondary"
                             component="p"
                         >
-                            Technologies: .NET, Microsoft SQL, Angular and React
+                            Technologies: .NET, PostgreSQL and React
                         </Typography>
                     </CardContent>
                     <CardActions disableSpacing>
@@ -82,7 +82,7 @@ export default function About() {
                             color="textSecondary"
                             component="p"
                         >
-                            tomovaliuno@gmail.com
+                            tomas@valiunas.dev
                         </Typography>
 
                         <IconButton aria-label="LinkedIn" component="a" href="https://www.linkedin.com/in/tomas-valiunas-5a5a85114/" >
