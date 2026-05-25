@@ -1,57 +1,72 @@
-import gsap from 'gsap'
-import React, { MouseEvent } from 'react'
+import React from 'react'
+import { useTranslation } from 'react-i18next'
+
 import { DialogData } from '../../dto/data'
-import TimeLineDialog from '../TimeLineDialog/TimeLineDialog'
+
 import './TimeLineEntry.css'
 
 interface TimeLineEntryProps {
     header: string
     time: string
-    even: boolean
     content: string[]
     dialogData: DialogData[]
 }
 
 function TimeLineEntry(prop: TimeLineEntryProps) {
-    const onEnter = (event: MouseEvent) => {
-        gsap.to(event.currentTarget, { scale: 1.1 })
-    }
+    const { t } = useTranslation()
+    const [expanded, setExpanded] = React.useState(false)
+    const hasMore = prop.dialogData && prop.dialogData.length > 0
 
-    const onLeave = (event: MouseEvent) => {
-        gsap.to(event.currentTarget, { scale: 1 })
-    }
-
-    const [open, setOpen] = React.useState(false)
-
-    const handleClickOpen = () => {
-        setOpen(true)
-    }
-    const handleClose = () => {
-        setOpen(false)
-    }
+    const toggle = () => setExpanded((x) => !x)
 
     return (
-        <div className="time-line-entry">
-            <div
-                className="content"
-                onMouseEnter={onEnter}
-                onMouseLeave={onLeave}
-                onClick={handleClickOpen}
-            >
-                <h3>{prop.header}</h3>
-                {prop.content.map((content, i) => (
-                    <p key={i}>{content}</p>
+        <article className="entry">
+            <div className="entry-date">{prop.time}</div>
+            <h3 className="entry-header">{prop.header}</h3>
+            <div className="entry-body">
+                {prop.content.map((line, i) => (
+                    <p key={i}>{line}</p>
                 ))}
+
+                {hasMore && (
+                    <div
+                        className={`entry-extended ${
+                            expanded ? 'entry-extended-open' : ''
+                        }`}
+                        aria-hidden={!expanded}
+                    >
+                        <div className="entry-extended-inner">
+                            {prop.dialogData.map((d, i) => (
+                                <React.Fragment key={i}>
+                                    {d.text && <p>{d.text}</p>}
+                                    {d.list && d.list.length > 0 && (
+                                        <ul>
+                                            {d.list.map((item, j) => (
+                                                <li key={j}>{item}</li>
+                                            ))}
+                                        </ul>
+                                    )}
+                                    {d.secondText && <p>{d.secondText}</p>}
+                                </React.Fragment>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
+                {hasMore && (
+                    <button
+                        type="button"
+                        className="entry-toggle"
+                        onClick={toggle}
+                        aria-expanded={expanded}
+                    >
+                        {expanded
+                            ? t('timelinePage.showLess')
+                            : t('timelinePage.readMore')}
+                    </button>
+                )}
             </div>
-            <div className={`time ${prop.even ? 'even-time' : 'odd-time'}`}>
-                <h4>{prop.time}</h4>
-            </div>
-            <TimeLineDialog
-                title={prop.header}
-                open={open}
-                dialogData={prop.dialogData}
-                onClose={handleClose}  />
-        </div>
+        </article>
     )
 }
 

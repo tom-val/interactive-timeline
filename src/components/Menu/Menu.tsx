@@ -1,78 +1,32 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
-import IconButton from '@material-ui/core/IconButton'
-import MenuIcon from '@material-ui/icons/Menu'
-import { AccountCircle } from '@material-ui/icons'
-import MenuDrawer from '../MenuDrawer/MenuDrawer'
-import { Link, useLocation } from 'react-router-dom';
-import ReactGA from 'react-ga';
+import { Link, NavLink, useLocation } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import ReactGA from 'react-ga4'
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-    },
-    menuButton: {
-        marginRight: theme.spacing(2),
-    },
-    title: {
-        flexGrow: 1,
-    },
-}))
+import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher'
+
+import './Menu.css'
 
 export default function NavigationMenu(props: { id?: string }) {
-    let location = useLocation();
+    const location = useLocation()
+    const { t } = useTranslation()
+
     React.useEffect(() => {
-        ReactGA.set({ page: location.pathname });
-        ReactGA.pageview(location.pathname);
-    }, [location]);
-
-    const classes = useStyles()
-
-    const [drawerState, setState] = React.useState(false);
-
-    const closeDrawer = () => (
-        event: React.KeyboardEvent | React.MouseEvent,
-    ) => {
-        if (
-            event.type === 'keydown' &&
-            ((event as React.KeyboardEvent).key === 'Tab' ||
-                (event as React.KeyboardEvent).key === 'Shift')
-        ) {
-            return;
-        }
-
-        setState(false);
-    };
-
-    const openDrawer = () => {
-        setState(true);
-    }
+        ReactGA.send({ hitType: 'pageview', page: location.pathname })
+    }, [location])
 
     return (
-        <div className={classes.root}>
-            <AppBar position="static">
-                <Toolbar id={props.id}>
-                    <IconButton
-                        edge="start"
-                        className={classes.menuButton}
-                        color="inherit"
-                        aria-label="menu"
-                        onClick={openDrawer}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography variant="h6" className={classes.title}>
-                        Tomas Valiūnas
-                    </Typography>
-                    <IconButton component={Link} to="/about" color="inherit">
-                        <AccountCircle />
-                    </IconButton>
-                </Toolbar>
-            </AppBar>
-            <MenuDrawer closeDrawer={closeDrawer} open={drawerState}></MenuDrawer>
-        </div>
+        <header className="appbar" id={props.id}>
+            <Link to="/" className="brand">
+                Tomas Valiūnas
+            </Link>
+            <nav className="appbar-nav">
+                <NavLink to="/" end>
+                    {t('nav.home')}
+                </NavLink>
+                <NavLink to="/timeline">{t('nav.timeline')}</NavLink>
+            </nav>
+            <LanguageSwitcher />
+        </header>
     )
 }

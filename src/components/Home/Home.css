@@ -1,0 +1,83 @@
+.section {
+    padding: 48px 0;
+}
+.section h2.section-title {
+    display: inline-block;
+    background: var(--ink);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 6px 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0 0 28px;
+    font-family: 'Raleway', sans-serif;
+}
+.section .section-subhead {
+    color: var(--muted);
+    margin: -20px 0 24px;
+    font-size: 0.95rem;
+}
+
+.home-footer {
+    margin-top: 60px;
+    padding: 30px 0;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--line);
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 18px;
+    font-family: inherit;
+    font-size: 0.92rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 0;
+    transition: transform 0.08s ease, box-shadow 0.15s ease,
+        background-color 0.15s ease;
+    text-decoration: none;
+    color: inherit;
+}
+.btn:hover {
+    transform: translateY(-1px);
+    text-decoration: none;
+}
+.btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+}
+.btn-primary {
+    background: var(--accent);
+    color: #fff;
+}
+.btn-primary:hover {
+    background: var(--accent-dark);
+}
+.btn-outline {
+    background: #fff;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+}
+.btn-ghost {
+    background: transparent;
+    color: var(--ink);
+}
+
+.ai-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, #6f4ea8 0%, #a04bb3 100%);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    padding: 3px 9px;
+    border-radius: 10px;
+}

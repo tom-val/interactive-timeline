@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tomas Valiūnas — Career Timeline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&family=Roboto:wght@400;500;700&display=swap"
+  rel="stylesheet"
+/>
+<style>
+  :root {
+    --accent: #e91e63;
+    --accent-dark: #c2185b;
+    --ink: #111;
+    --muted: #555;
+    --line: #e5e5e5;
+    --bg: #fafafa;
+    --card: #ffffff;
+    --shadow: 0 2px 6px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.06);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Raleway', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.55;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .appbar {
+    background: var(--accent);
+    color: #fff;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    position: sticky; top: 0; z-index: 10;
+  }
+  .appbar .menu-btn {
+    background: transparent; border: 0; color: #fff;
+    font-size: 22px; cursor: pointer; padding: 4px 8px;
+  }
+  .appbar .brand { font-weight: 600; font-size: 1.15rem; flex: 1; }
+  .appbar nav a {
+    color: #fff; margin-left: 18px; font-size: 0.95rem; font-weight: 500;
+    opacity: 0.92;
+  }
+  .appbar nav a.active { opacity: 1; border-bottom: 2px solid #fff; padding-bottom: 4px; }
+  .appbar nav a:hover { opacity: 1; text-decoration: none; }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+  .page-head {
+    padding: 60px 0 30px; text-align: center;
+  }
+  .page-head .eyebrow {
+    display: inline-block;
+    background: var(--ink); color: #fff;
+    padding: 4px 12px; font-size: 0.72rem;
+    text-transform: uppercase; letter-spacing: 2px; font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .page-head h1 {
+    font-size: 2.4rem; margin: 0 0 10px; letter-spacing: -0.5px;
+  }
+  .page-head p {
+    color: var(--muted); margin: 0 auto; max-width: 580px; font-size: 1rem;
+  }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    margin: 50px 0 80px;
+    padding-left: 38px;
+  }
+  .timeline::before {
+    content: ""; position: absolute;
+    left: 12px; top: 6px; bottom: 6px;
+    width: 2px; background: var(--line);
+  }
+  .entry {
+    position: relative; padding: 0 0 36px;
+  }
+  .entry::before {
+    content: ""; position: absolute;
+    left: -34px; top: 8px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--line);
+  }
+  .entry .date {
+    font-size: 0.78rem; font-weight: 700;
+    color: var(--accent); text-transform: uppercase; letter-spacing: 1.5px;
+    margin-bottom: 4px;
+  }
+  .entry h3 { margin: 0 0 2px; font-size: 1.15rem; }
+  .entry .where {
+    font-size: 0.88rem; color: var(--muted); margin-bottom: 8px;
+  }
+  .entry .body {
+    background: var(--card); border-radius: 8px;
+    padding: 14px 18px; box-shadow: var(--shadow);
+    font-size: 0.93rem; color: var(--ink);
+  }
+  .entry .body ul { margin: 0; padding-left: 18px; }
+  .entry .body li { margin-bottom: 4px; }
+
+  .note {
+    background: #fff7e6; border-left: 4px solid #f39c12;
+    padding: 12px 16px; font-size: 0.88rem; color: #6a4f00;
+    border-radius: 4px; margin: 24px 0;
+  }
+
+  footer {
+    margin-top: 60px; padding: 30px 0;
+    text-align: center; color: var(--muted); font-size: 0.85rem;
+    border-top: 1px solid var(--line);
+  }
+</style>
+</head>
+<body>
+
+<header class="appbar">
+  <button class="menu-btn" aria-label="menu">☰</button>
+  <div class="brand">Tomas Valiūnas</div>
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="timeline.html" class="active">Timeline</a>
+    <a href="#">About</a>
+  </nav>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <span class="eyebrow">Career</span>
+    <h1>Where I've been</h1>
+    <p>
+      Roles, projects, and milestones — roughly in order. Pulled from the same
+      <code>data.json</code> the current site reads, so this page replaces the home route 1:1.
+    </p>
+  </section>
+
+  <div class="note">
+    <strong>Mockup note:</strong> the production version of this page will render the existing
+    React <code>&lt;Timeline /&gt;</code> component (GSAP animations, dialog popups). The
+    entries below are static samples just to convey layout — actual data comes from
+    <a href="../public/data/data.json">public/data/data.json</a>.
+  </div>
+
+  <div class="timeline">
+
+    <div class="entry">
+      <div class="date">2024 — Present</div>
+      <h3>Senior Software Developer</h3>
+      <div class="where">Current role</div>
+      <div class="body">
+        Leading backend work on a production .NET / PostgreSQL stack. Mentoring,
+        architecture, and rolling out new features end-to-end.
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="date">2022 — 2024</div>
+      <h3>Software Developer</h3>
+      <div class="where">Previous role</div>
+      <div class="body">
+        Built and shipped multiple side projects in parallel — atiduosiu.lt,
+        finances.valiunas.dev, food.valiunas.dev, coffee.valiunas.dev.
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="date">2020 — 2022</div>
+      <h3>Software Developer</h3>
+      <div class="where">Earlier role</div>
+      <div class="body">
+        Full-stack work on internal tooling. Picked up React in earnest, kept
+        deepening .NET and SQL.
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="date">2018 — 2020</div>
+      <h3>Junior Developer</h3>
+      <div class="where">First role</div>
+      <div class="body">
+        First full-time developer job. Got comfortable with .NET, source control,
+        code review, and shipping in a real team.
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="date">Education</div>
+      <h3>Bachelor's in Computer Science</h3>
+      <div class="where">University</div>
+      <div class="body">
+        Foundations: data structures, algorithms, databases, and a healthy dose of
+        side-project work on the side.
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  © Tomas Valiūnas · <a href="mailto:tomas@valiunas.dev">tomas@valiunas.dev</a> ·
+  <a href="https://github.com/tom-val" target="_blank">GitHub</a> ·
+  <a href="https://www.linkedin.com/in/tomas-valiunas-5a5a85114/" target="_blank">LinkedIn</a>
+</footer>
+
+</body>
+</html>

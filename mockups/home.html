@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tomas Valiūnas — Software Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&family=Roboto:wght@400;500;700&display=swap"
+  rel="stylesheet"
+/>
+<style>
+  :root {
+    --accent: #e91e63;
+    --accent-dark: #c2185b;
+    --ink: #111;
+    --muted: #555;
+    --line: #e5e5e5;
+    --bg: #fafafa;
+    --card: #ffffff;
+    --radius: 10px;
+    --shadow: 0 2px 6px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.06);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Raleway', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.55;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* Top bar (mimics current Material AppBar) */
+  .appbar {
+    background: var(--accent);
+    color: #fff;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    position: sticky; top: 0; z-index: 10;
+  }
+  .appbar .menu-btn {
+    background: transparent; border: 0; color: #fff;
+    font-size: 22px; cursor: pointer; padding: 4px 8px;
+  }
+  .appbar .brand {
+    font-weight: 600; font-size: 1.15rem; flex: 1;
+  }
+  .appbar nav a {
+    color: #fff; margin-left: 18px; font-size: 0.95rem; font-weight: 500;
+    opacity: 0.92;
+  }
+  .appbar nav a:hover { opacity: 1; text-decoration: none; border-bottom: 2px solid #fff; }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  /* Hero */
+  .hero {
+    padding: 64px 0 48px;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .hero img {
+    width: 220px; height: 220px; object-fit: cover;
+    border-radius: 50%;
+    box-shadow: var(--shadow);
+    border: 4px solid #fff;
+  }
+  .hero h1 {
+    font-size: 2.6rem; margin: 0 0 6px; letter-spacing: -0.5px;
+  }
+  .hero .role {
+    display: inline-block;
+    background: var(--ink); color: #fff;
+    padding: 4px 10px; font-size: 0.78rem;
+    text-transform: uppercase; letter-spacing: 1.2px; font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .hero p.lead {
+    font-size: 1.1rem; color: var(--muted); margin: 0 0 16px; max-width: 560px;
+  }
+  .hero .stack {
+    font-size: 0.9rem; color: var(--ink); margin-bottom: 18px;
+  }
+  .hero .stack span {
+    display: inline-block; border: 1px solid var(--line);
+    padding: 3px 10px; margin: 0 6px 6px 0; border-radius: 16px;
+    font-size: 0.82rem; background: #fff;
+  }
+  .hero .cta { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 10px 18px;
+    font-family: inherit; font-size: 0.92rem; font-weight: 600;
+    border-radius: 6px; cursor: pointer; border: 0;
+    transition: transform 0.08s ease, box-shadow 0.15s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: var(--accent-dark); }
+  .btn-outline { background: #fff; color: var(--ink); border: 1px solid var(--ink); }
+  .btn-ghost { background: transparent; color: var(--ink); }
+
+  /* Section heading — echoes the LaTeX CV's black box */
+  .section { padding: 48px 0; }
+  .section h2 {
+    display: inline-block;
+    background: var(--ink); color: #fff;
+    font-weight: 700; font-size: 1rem;
+    padding: 6px 14px;
+    text-transform: uppercase; letter-spacing: 2px;
+    margin: 0 0 28px;
+  }
+  .section .subhead {
+    color: var(--muted); margin: -20px 0 24px; font-size: 0.95rem;
+  }
+
+  /* Featured project grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+  .card {
+    background: var(--card); border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08), 0 14px 30px rgba(0,0,0,0.1);
+  }
+  .card .thumb {
+    height: 180px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3.4rem;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    background: #f4f4f4;
+  }
+  .card .thumb.placeholder::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.18), transparent 60%);
+  }
+  .card .thumb img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: top center;
+    display: block;
+  }
+  .card .thumb .badge-todo {
+    position: absolute; top: 10px; right: 10px;
+    background: rgba(0,0,0,0.5); color: #fff;
+    font-size: 0.62rem; padding: 2px 7px;
+    border-radius: 8px; letter-spacing: 1px;
+    text-transform: uppercase; font-weight: 700;
+    z-index: 2;
+  }
+  .thumb.atid { background: linear-gradient(135deg, #ff6b6b, #c0392b); }
+  .thumb.fin  { background: linear-gradient(135deg, #27ae60, #145a32); }
+  .thumb.food { background: linear-gradient(135deg, #f39c12, #c0392b); }
+  .thumb.coff { background: linear-gradient(135deg, #6f4e37, #3e2723); }
+  .thumb.wed  { background: linear-gradient(135deg, #e91e63, #880e4f); }
+  .thumb.lem  { background: linear-gradient(135deg, #f1c40f, #d35400); }
+
+  .card .body { padding: 18px 20px 16px; flex: 1; display: flex; flex-direction: column; }
+  .card h3 { margin: 0 0 6px; font-size: 1.15rem; }
+  .card .desc { color: var(--muted); font-size: 0.92rem; margin: 0 0 14px; flex: 1; }
+  .card .tags { margin-bottom: 14px; }
+  .card .tags span {
+    display: inline-block; font-size: 0.72rem; font-weight: 600;
+    background: #f1f1f1; color: var(--ink);
+    padding: 2px 8px; border-radius: 10px; margin: 0 4px 4px 0;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .card .links { display: flex; gap: 16px; font-size: 0.88rem; font-weight: 600; }
+  .card .links a { display: inline-flex; align-items: center; gap: 4px; }
+  .card .links .gh { color: var(--ink); }
+
+  /* Small projects: compact horizontal cards */
+  .grid-small {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .small-card {
+    display: flex; gap: 14px; align-items: center;
+    background: var(--card); padding: 14px 16px;
+    border-radius: var(--radius); box-shadow: var(--shadow);
+  }
+  .small-card .ico {
+    width: 56px; height: 56px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem; color: #fff; flex-shrink: 0;
+  }
+  .small-card .ico.wed { background: linear-gradient(135deg, #e91e63, #880e4f); }
+  .small-card .ico.lem { background: linear-gradient(135deg, #f1c40f, #d35400); }
+  .small-card h4 { margin: 0 0 4px; font-size: 1rem; }
+  .small-card p { margin: 0; font-size: 0.86rem; color: var(--muted); }
+  .small-card .l { font-size: 0.82rem; margin-top: 4px; display: block; }
+
+  /* Quote estimator */
+  .quote-wrap {
+    background: #fff; border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 28px 28px 24px;
+  }
+  .quote-wrap .disclaimer {
+    background: #fff7e6; border-left: 4px solid #f39c12;
+    padding: 10px 14px; font-size: 0.85rem; color: #6a4f00;
+    margin-bottom: 22px; border-radius: 4px;
+  }
+  textarea {
+    width: 100%; min-height: 110px;
+    padding: 12px 14px; font-family: inherit; font-size: 0.95rem;
+    border: 1px solid var(--line); border-radius: 6px; resize: vertical;
+    outline: none; transition: border-color 0.15s;
+  }
+  textarea:focus { border-color: var(--accent); }
+  .quote-row { display: flex; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
+
+  .clarifiers { margin-top: 26px; display: none; }
+  .clarifiers.active { display: block; }
+  .clarifiers h3 {
+    font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.2px;
+    color: var(--muted); margin: 0 0 12px;
+  }
+  .questions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px 18px; }
+  .q-group label.q {
+    display: block; font-weight: 600; font-size: 0.92rem; margin-bottom: 6px;
+  }
+  .opts { display: flex; flex-wrap: wrap; gap: 6px; }
+  .opts button {
+    padding: 6px 12px; background: #f4f4f4; border: 1px solid transparent;
+    border-radius: 14px; font-family: inherit; font-size: 0.82rem;
+    cursor: pointer; color: var(--ink);
+    transition: all 0.12s ease;
+  }
+  .opts button:hover { background: #ebebeb; }
+  .opts button.on {
+    background: var(--ink); color: #fff; border-color: var(--ink);
+  }
+
+  .features { margin-top: 22px; }
+  .features h3 {
+    font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.2px;
+    color: var(--muted); margin: 0 0 10px;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    padding: 7px 14px; background: #fff; border: 1px solid var(--line);
+    border-radius: 18px; font-size: 0.85rem; cursor: pointer; user-select: none;
+    transition: all 0.12s ease;
+  }
+  .chip:hover { border-color: var(--ink); }
+  .chip.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+  /* AI thinking + question card */
+  .ai-thinking {
+    display: none; align-items: center; gap: 12px;
+    margin-top: 22px; padding: 14px 18px;
+    background: #f6f1ff; border: 1px solid #e2d4ff;
+    border-radius: var(--radius); color: #4a2d8f;
+    font-size: 0.92rem;
+  }
+  .ai-thinking.active { display: flex; }
+  .ai-thinking .spinner {
+    width: 18px; height: 18px; border-radius: 50%;
+    border: 2px solid rgba(74, 45, 143, 0.2);
+    border-top-color: #4a2d8f;
+    animation: spin 0.9s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .ai-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: linear-gradient(135deg, #6f4ea8 0%, #a04bb3 100%);
+    color: #fff; font-size: 0.7rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1.2px;
+    padding: 3px 9px; border-radius: 10px; margin-right: 8px;
+  }
+  .ai-questions { display: none; margin-top: 26px; }
+  .ai-questions.active { display: block; }
+  .ai-questions .intro {
+    font-size: 0.95rem; color: var(--ink); margin: 0 0 18px;
+  }
+  .ai-q {
+    background: #fff; border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 16px 18px;
+    margin-bottom: 12px;
+    transition: border-color 0.15s;
+  }
+  .ai-q.answered { border-color: #c5e1c5; background: #f7fbf7; }
+  .ai-q .qtext {
+    font-weight: 600; font-size: 0.95rem; margin: 0 0 10px;
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .ai-q .qnum {
+    flex-shrink: 0; width: 22px; height: 22px;
+    background: var(--ink); color: #fff; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 0.72rem; font-weight: 700;
+  }
+  .ai-q .qopts { display: flex; flex-wrap: wrap; gap: 6px; }
+  .ai-q .qopts button {
+    padding: 7px 14px; background: #f4f4f4; border: 1px solid transparent;
+    border-radius: 16px; font-family: inherit; font-size: 0.85rem;
+    cursor: pointer; color: var(--ink);
+    transition: all 0.12s ease;
+  }
+  .ai-q .qopts button:hover { background: #ebebeb; }
+  .ai-q .qopts button.on {
+    background: var(--ink); color: #fff; border-color: var(--ink);
+  }
+  .ai-q .qtext textarea {
+    min-height: 60px; font-size: 0.9rem;
+  }
+
+  .estimate {
+    margin-top: 28px; padding: 20px 22px;
+    background: linear-gradient(135deg, #111 0%, #2a2a2a 100%);
+    color: #fff; border-radius: var(--radius);
+    display: none;
+  }
+  .estimate.active { display: block; }
+  .estimate .label {
+    font-size: 0.78rem; letter-spacing: 1.5px; text-transform: uppercase;
+    color: rgba(255,255,255,0.55); margin: 0 0 6px;
+  }
+  .estimate .range {
+    font-size: 2.2rem; font-weight: 700; letter-spacing: -0.5px; margin: 0 0 6px;
+  }
+  .estimate .timeline { font-size: 0.95rem; color: rgba(255,255,255,0.75); }
+  .estimate .breakdown {
+    margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.15);
+    font-size: 0.85rem; color: rgba(255,255,255,0.8);
+  }
+  .estimate .breakdown div {
+    display: flex; justify-content: space-between; padding: 3px 0;
+  }
+  .estimate .actions { margin-top: 18px; display: flex; gap: 10px; }
+  .estimate .actions .btn { background: #fff; color: var(--ink); }
+
+  /* Footer */
+  footer {
+    margin-top: 60px; padding: 30px 0;
+    text-align: center; color: var(--muted); font-size: 0.85rem;
+    border-top: 1px solid var(--line);
+  }
+
+  /* Responsive */
+  @media (max-width: 720px) {
+    .hero { grid-template-columns: 1fr; text-align: center; padding-top: 40px; }
+    .hero img { margin: 0 auto; width: 160px; height: 160px; }
+    .hero .cta { justify-content: center; }
+    .hero h1 { font-size: 2rem; }
+    .grid, .grid-small, .questions { grid-template-columns: 1fr; }
+    .appbar nav a { margin-left: 10px; font-size: 0.85rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="appbar">
+  <button class="menu-btn" aria-label="menu">☰</button>
+  <div class="brand">Tomas Valiūnas</div>
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="timeline.html">Timeline</a>
+    <a href="#">About</a>
+  </nav>
+</header>
+
+<main class="container">
+
+  <!-- HERO -->
+  <section class="hero">
+    <img src="../public/tomas-valiunas.png" alt="Tomas Valiūnas" />
+    <div>
+      <span class="role">Software Developer</span>
+      <h1>Hi, I'm Tomas.</h1>
+      <p class="lead">
+        I build pragmatic web apps end-to-end — from payment integrations and admin tooling
+        to small one-off forms. Based in Lithuania, available for select side projects.
+      </p>
+      <div class="stack">
+        <span>.NET</span><span>PostgreSQL</span><span>React</span>
+        <span>TypeScript</span><span>AWS Lambda</span>
+      </div>
+      <div class="cta">
+        <a href="#quote" class="btn btn-primary">Get a project quote</a>
+        <a href="timeline.html" class="btn btn-outline">My career timeline →</a>
+        <a href="mailto:tomas@valiunas.dev" class="btn btn-ghost">tomas@valiunas.dev</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PROJECTS -->
+  <section class="section">
+    <h2>Portfolio</h2>
+    <p class="subhead">A few things I've built and run in production.</p>
+
+    <!--
+      Drop screenshots into mockups/screenshots/ with these filenames to replace placeholders:
+        atiduosiu.png ✓ (done)   finances.png   food.png   coffee.png   wedding.png   lemonade.png
+      Recommended capture: 1280×720 (or wider), top-of-page hero.
+    -->
+    <div class="grid">
+      <article class="card">
+        <div class="thumb">
+          <img src="screenshots/atiduosiu.png" alt="atiduosiu.lt screenshot" />
+        </div>
+        <div class="body">
+          <h3>atiduosiu.lt</h3>
+          <p class="desc">
+            Marketplace for giving things away. Full Montonio payments integration and
+            automatic shipping label generation.
+          </p>
+          <div class="tags"><span>Payments</span><span>Shipping API</span><span>Marketplace</span></div>
+          <div class="links">
+            <a href="https://atiduosiu.lt" target="_blank">Visit site ↗</a>
+            <a href="https://github.com/tom-val" class="gh" target="_blank">GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb fin placeholder">
+          <span class="badge-todo">Screenshot pending</span>💶
+        </div>
+        <div class="body">
+          <h3>finances.valiunas.dev</h3>
+          <p class="desc">
+            Personal finance tracker. Log expenses, see what's left this month, and
+            review small analytics on spending patterns.
+          </p>
+          <div class="tags"><span>Personal Finance</span><span>Analytics</span></div>
+          <div class="links">
+            <a href="https://finances.valiunas.dev" target="_blank">Visit site ↗</a>
+            <a href="https://github.com/tom-val" class="gh" target="_blank">GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb food placeholder">
+          <span class="badge-todo">Screenshot pending</span>🍳
+        </div>
+        <div class="body">
+          <h3>food.valiunas.dev</h3>
+          <p class="desc">
+            Weekly meal planner. Save recipes, plan a week of meals, and auto-generate
+            the grocery list from selected recipes.
+          </p>
+          <div class="tags"><span>Meal Planning</span><span>Recipes</span></div>
+          <div class="links">
+            <a href="https://food.valiunas.dev" target="_blank">Visit site ↗</a>
+            <a href="https://github.com/tom-val" class="gh" target="_blank">GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb coff placeholder">
+          <span class="badge-todo">Screenshot pending</span>☕
+        </div>
+        <div class="body">
+          <h3>coffee.valiunas.dev</h3>
+          <p class="desc">
+            Social coffee log. Track what you drink, rate cafés, see where friends are
+            drinking, and browse a feed of recent check-ins.
+          </p>
+          <div class="tags"><span>Social</span><span>Geolocation</span><span>Ratings</span></div>
+          <div class="links">
+            <a href="https://coffee.valiunas.dev" target="_blank">Visit site ↗</a>
+            <a href="https://github.com/tom-val" class="gh" target="_blank">GitHub</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- SMALL PROJECTS -->
+  <section class="section">
+    <h2>One-pagers &amp; forms</h2>
+    <p class="subhead">Smaller, focused projects built on tight deadlines.</p>
+
+    <div class="grid-small">
+      <div class="small-card">
+        <div class="ico wed">💍</div>
+        <div>
+          <h4>Wedding invitation + RSVP</h4>
+          <p>Custom invitation with guest RSVP form and an admin dashboard for tracking responses.</p>
+          <a class="l" href="https://tomasirugne.click/aiste-18634" target="_blank">tomasirugne.click ↗</a>
+        </div>
+      </div>
+
+      <div class="small-card">
+        <div class="ico lem">🍋</div>
+        <div>
+          <h4>Lemonade competition registration</h4>
+          <p>Single-page registration form for a local lemonade-making competition.</p>
+          <a class="l" href="https://lemonade.tomasirugne.click" target="_blank">lemonade.tomasirugne.click ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE ESTIMATOR (AI-driven) -->
+  <section class="section" id="quote">
+    <h2>Project quote</h2>
+    <p class="subhead">
+      <span class="ai-badge">AI</span>
+      Describe your idea — I'll ask a few clarifying questions and give you a rough estimate.
+    </p>
+
+    <div class="quote-wrap">
+      <div class="disclaimer">
+        <strong>Heads up:</strong> this is an AI-generated indicative estimate — not a binding quote.
+        Final pricing depends on exact requirements, integrations, and timeline. We'll firm it up over email.
+      </div>
+
+      <label for="desc" style="display:block; font-weight:600; margin-bottom:8px;">
+        Describe your project
+      </label>
+      <textarea id="desc" placeholder="e.g. A booking site for my photography business. Clients pick a time slot, pay a deposit, and get an email confirmation. I'd like an admin view to see upcoming bookings."></textarea>
+
+      <div class="quote-row">
+        <button class="btn btn-primary" id="analyze">Ask clarifying questions →</button>
+        <button class="btn btn-ghost" id="reset" type="button">Reset</button>
+      </div>
+
+      <!-- Step 1: AI thinking about questions -->
+      <div class="ai-thinking" id="thinking-questions">
+        <div class="spinner"></div>
+        <span>Analyzing your description and preparing questions…</span>
+      </div>
+
+      <!-- Step 2: AI-generated clarifying questions -->
+      <div class="ai-questions" id="questions-block">
+        <p class="intro">
+          <span class="ai-badge">AI</span>
+          Based on what you described, here are a few things I'd want to confirm:
+        </p>
+        <div id="questions-list"><!-- Injected by JS --></div>
+        <div class="quote-row">
+          <button class="btn btn-primary" id="estimate-btn" disabled>Get estimate →</button>
+          <button class="btn btn-ghost" id="back-btn" type="button">← Edit description</button>
+        </div>
+      </div>
+
+      <!-- Step 3: AI thinking about estimate -->
+      <div class="ai-thinking" id="thinking-estimate">
+        <div class="spinner"></div>
+        <span>Calculating estimate based on your answers…</span>
+      </div>
+
+      <!-- Step 4: Estimate result -->
+      <div class="estimate" id="estimate">
+        <div class="label">
+          <span class="ai-badge" style="background:rgba(255,255,255,0.15)">AI estimate</span>
+          Estimated investment
+        </div>
+        <div class="range" id="range">€— – €—</div>
+        <div class="timeline" id="time">Timeline: —</div>
+        <div class="breakdown" id="breakdown"></div>
+        <div class="actions">
+          <a class="btn" href="mailto:tomas@valiunas.dev?subject=Project%20quote%20request" id="email-link">
+            Email me the details →
+          </a>
+          <button class="btn" id="restart-btn" style="background:rgba(255,255,255,0.12);color:#fff;border:1px solid rgba(255,255,255,0.3);">
+            Start over
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © Tomas Valiūnas · <a href="mailto:tomas@valiunas.dev">tomas@valiunas.dev</a> ·
+  <a href="https://github.com/tom-val" target="_blank">GitHub</a> ·
+  <a href="https://www.linkedin.com/in/tomas-valiunas-5a5a85114/" target="_blank">LinkedIn</a>
+</footer>
+
+<script>
+  /**
+   * AI-driven quote estimator (mockup).
+   *
+   * In production, replace `mockGenerateQuestions(desc)` and
+   * `mockGenerateEstimate(desc, answers)` with calls to an AI endpoint
+   * (e.g. Anthropic Messages API) that returns structured JSON.
+   * The UI flow below works unchanged with real AI responses.
+   *
+   *   Request 1: POST /api/quote/questions  { description }
+   *     → { questions: [{ id, text, type:'choice'|'text', options? }] }
+   *
+   *   Request 2: POST /api/quote/estimate   { description, answers }
+   *     → { low, high, timeline, summary, breakdown: [{label, value}] }
+   */
+
+  const state = {
+    description: '',
+    questions: [],
+    answers: {},
+  };
+
+  // --- Mocked AI: generate clarifying questions from description ---
+  function mockGenerateQuestions(desc) {
+    const t = (desc || '').toLowerCase();
+    const qs = [];
+
+    // Always ask: project type
+    qs.push({
+      id: 'type',
+      text: 'How would you describe the scope?',
+      type: 'choice',
+      options: [
+        { value: 'landing',   label: 'A simple landing page or form' },
+        { value: 'webapp',    label: 'A full web application' },
+        { value: 'ecom',      label: 'An e-commerce / marketplace' },
+        { value: 'dashboard', label: 'An internal tool / dashboard' },
+      ],
+    });
+
+    // Contextual: payments?
+    if (/(pay|checkout|stripe|montonio|deposit|subscription|card|sell|buy|shop|store|marketplace|product)/.test(t)) {
+      qs.push({
+        id: 'payments',
+        text: 'Will users pay through the site?',
+        type: 'choice',
+        options: [
+          { value: 'none', label: 'No payments' },
+          { value: 'oneoff', label: 'One-off payments only' },
+          { value: 'subs', label: 'Subscriptions / recurring' },
+          { value: 'marketplace', label: 'Marketplace (payouts to multiple sellers)' },
+        ],
+      });
+    }
+
+    // Contextual: users / auth?
+    if (/(user|account|login|sign[ -]?up|profile|auth|member)/.test(t)) {
+      qs.push({
+        id: 'auth',
+        text: 'Do users need accounts?',
+        type: 'choice',
+        options: [
+          { value: 'none', label: 'No, anonymous use' },
+          { value: 'simple', label: 'Email + password (or social login)' },
+          { value: 'roles', label: 'Multiple roles (e.g. admin, customer)' },
+        ],
+      });
+    }
+
+    // Contextual: admin panel?
+    if (/(admin|manage|backoffice|back[ -]office|moderation|dashboard|approve|review)/.test(t)) {
+      qs.push({
+        id: 'admin',
+        text: 'Will you need an admin panel?',
+        type: 'choice',
+        options: [
+          { value: 'none', label: 'No admin needed' },
+          { value: 'basic', label: 'Simple — view & edit records' },
+          { value: 'rich', label: 'Rich — reports, exports, bulk actions' },
+        ],
+      });
+    }
+
+    // Contextual: integrations?
+    if (/(integrat|api|webhook|sync|shipping|email|notify|slack|crm|sheet)/.test(t)) {
+      qs.push({
+        id: 'integrations',
+        text: 'Any 3rd-party integrations to consider?',
+        type: 'text',
+        placeholder: 'e.g. Stripe, SendGrid, shipping API, Google Sheets…',
+      });
+    }
+
+    // Always ask: timeline
+    qs.push({
+      id: 'timeline',
+      text: 'What\'s your ideal timeline?',
+      type: 'choice',
+      options: [
+        { value: 'relaxed', label: 'Relaxed — 2+ months is fine' },
+        { value: 'normal',  label: 'Normal — about a month' },
+        { value: 'rush',    label: 'Rush — 2 weeks or less' },
+      ],
+    });
+
+    // Always ask: design
+    qs.push({
+      id: 'design',
+      text: 'How should the design come together?',
+      type: 'choice',
+      options: [
+        { value: 'bring',  label: 'I have designs ready (Figma, etc.)' },
+        { value: 'basic',  label: 'Clean & simple — you choose' },
+        { value: 'custom', label: 'Full custom design needed' },
+      ],
+    });
+
+    return qs;
+  }
+
+  // --- Mocked AI: compute estimate from description + answers ---
+  function mockGenerateEstimate(desc, answers) {
+    const BASE = { landing: 500, webapp: 2000, ecom: 3500, dashboard: 2500 };
+    const PAY  = { none: 0, oneoff: 1200, subs: 1600, marketplace: 2500 };
+    const AUTH = { none: 0, simple: 700, roles: 1200 };
+    const ADM  = { none: 0, basic: 800, rich: 1800 };
+    const DES  = { bring: 0, basic: 300, custom: 1200 };
+    const URG  = { relaxed: 0.95, normal: 1.0, rush: 1.35 };
+    const TL   = {
+      landing:   { relaxed: '3–5 weeks', normal: '2–3 weeks', rush: '1–2 weeks' },
+      webapp:    { relaxed: '8–12 weeks', normal: '5–8 weeks', rush: '3–5 weeks' },
+      ecom:      { relaxed: '12–18 weeks', normal: '8–12 weeks', rush: '5–8 weeks' },
+      dashboard: { relaxed: '8–10 weeks', normal: '5–8 weeks', rush: '3–5 weeks' },
+    };
+
+    const type   = answers.type || 'webapp';
+    const urgency = answers.timeline || 'normal';
+    const design = answers.design || 'basic';
+
+    const items = [];
+    let total = BASE[type] || 2000;
+    items.push({ label: `Base — ${labelFor('type', type)}`, value: total });
+
+    if (answers.payments && PAY[answers.payments]) {
+      const v = PAY[answers.payments];
+      total += v;
+      items.push({ label: `Payments — ${labelFor('payments', answers.payments)}`, value: v });
+    }
+    if (answers.auth && AUTH[answers.auth]) {
+      const v = AUTH[answers.auth];
+      total += v;
+      items.push({ label: `Auth — ${labelFor('auth', answers.auth)}`, value: v });
+    }
+    if (answers.admin && ADM[answers.admin]) {
+      const v = ADM[answers.admin];
+      total += v;
+      items.push({ label: `Admin — ${labelFor('admin', answers.admin)}`, value: v });
+    }
+    if (answers.integrations && answers.integrations.trim()) {
+      // Rough: €400 per comma-separated integration
+      const n = answers.integrations.split(/[,;]+/).filter(s => s.trim()).length;
+      const v = n * 400;
+      total += v;
+      items.push({ label: `Integrations (${n})`, value: v });
+    }
+    if (DES[design]) {
+      total += DES[design];
+      items.push({ label: `Design — ${labelFor('design', design)}`, value: DES[design] });
+    }
+
+    const urgencyMult = URG[urgency] || 1;
+    if (urgencyMult !== 1) {
+      items.push({ label: `Timeline (${urgency}) ×${urgencyMult}`, value: null, mult: urgencyMult });
+      total *= urgencyMult;
+    }
+
+    const low  = Math.max(300, Math.round(total * 0.9  / 100) * 100);
+    const high = Math.round(total * 1.35 / 100) * 100;
+    const timeline = (TL[type] || TL.webapp)[urgency] || '—';
+
+    return { low, high, timeline, items, summary: `${labelFor('type', type)} · ${urgency} timeline · ${design} design` };
+  }
+
+  function labelFor(qid, value) {
+    const q = state.questions.find(x => x.id === qid);
+    if (!q || q.type !== 'choice') return value;
+    const opt = q.options.find(o => o.value === value);
+    return opt ? opt.label : value;
+  }
+
+  // --- Rendering ---
+  function renderQuestions() {
+    const list = document.getElementById('questions-list');
+    list.innerHTML = '';
+    state.questions.forEach((q, idx) => {
+      const card = document.createElement('div');
+      card.className = 'ai-q';
+      card.dataset.qid = q.id;
+
+      const head = document.createElement('div');
+      head.className = 'qtext';
+      head.innerHTML = `<span class="qnum">${idx + 1}</span><span>${q.text}</span>`;
+      card.appendChild(head);
+
+      if (q.type === 'choice') {
+        const opts = document.createElement('div');
+        opts.className = 'qopts';
+        q.options.forEach(o => {
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.dataset.val = o.value;
+          b.textContent = o.label;
+          b.addEventListener('click', () => {
+            state.answers[q.id] = o.value;
+            card.classList.add('answered');
+            opts.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b));
+            updateEstimateButton();
+          });
+          opts.appendChild(b);
+        });
+        card.appendChild(opts);
+      } else {
+        const ta = document.createElement('textarea');
+        ta.placeholder = q.placeholder || '';
+        ta.addEventListener('input', () => {
+          state.answers[q.id] = ta.value;
+          card.classList.toggle('answered', ta.value.trim().length > 0);
+          updateEstimateButton();
+        });
+        card.appendChild(ta);
+      }
+      list.appendChild(card);
+    });
+  }
+
+  function updateEstimateButton() {
+    // Enable only when all *choice* questions are answered (text questions optional)
+    const required = state.questions.filter(q => q.type === 'choice');
+    const allAnswered = required.every(q => state.answers[q.id]);
+    document.getElementById('estimate-btn').disabled = !allAnswered;
+  }
+
+  function renderEstimate(r) {
+    document.getElementById('range').textContent =
+      `€${r.low.toLocaleString('en-US')} – €${r.high.toLocaleString('en-US')}`;
+    document.getElementById('time').textContent = `Timeline: ${r.timeline}`;
+    const breakdown = document.getElementById('breakdown');
+    breakdown.innerHTML = r.items.map(item => {
+      if (item.value === null && item.mult) {
+        return `<div><span>${item.label}</span><span>×${item.mult}</span></div>`;
+      }
+      return `<div><span>${item.label}</span><span>€${item.value.toLocaleString('en-US')}</span></div>`;
+    }).join('') + `<div style="margin-top:8px;opacity:0.75"><span>Summary:</span><span style="text-align:right;max-width:65%">${r.summary}</span></div>`;
+
+    // Pre-fill email link with description + answers
+    const emailBody = encodeURIComponent(
+      `Hi Tomas,\n\nI just used the AI quote estimator on your site.\n\n` +
+      `Description:\n${state.description}\n\n` +
+      `My answers:\n${Object.entries(state.answers).map(([k,v]) => `- ${k}: ${v}`).join('\n')}\n\n` +
+      `Estimate shown: €${r.low.toLocaleString('en-US')} – €${r.high.toLocaleString('en-US')}\n\n` +
+      `Let's talk!\n`
+    );
+    document.getElementById('email-link').href =
+      `mailto:tomas@valiunas.dev?subject=Project%20quote%20request&body=${emailBody}`;
+  }
+
+  // --- Flow control ---
+  function show(id, on = true) {
+    document.getElementById(id).classList.toggle('active', on);
+  }
+  function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+  function flashHint(msg) {
+    let hint = document.getElementById('desc-hint');
+    if (!hint) {
+      hint = document.createElement('div');
+      hint.id = 'desc-hint';
+      hint.style.cssText = 'margin-top:8px;color:#c0392b;font-size:0.85rem;font-weight:600;';
+      document.getElementById('desc').insertAdjacentElement('afterend', hint);
+    }
+    hint.textContent = msg;
+    hint.animate(
+      [{ opacity: 0, transform: 'translateY(-4px)' }, { opacity: 1, transform: 'translateY(0)' }],
+      { duration: 220, easing: 'ease-out' }
+    );
+  }
+
+  async function startQuestionFlow() {
+    const desc = document.getElementById('desc').value.trim();
+    if (desc.length < 12) {
+      flashHint('Please describe your project in at least a sentence so I can ask the right questions.');
+      document.getElementById('desc').focus();
+      return;
+    }
+    const hint = document.getElementById('desc-hint');
+    if (hint) hint.remove();
+    state.description = desc;
+    state.answers = {};
+
+    // Hide things, show thinking
+    show('questions-block', false);
+    show('estimate', false);
+    show('thinking-questions', true);
+
+    await delay(900); // Simulated AI latency
+
+    state.questions = mockGenerateQuestions(desc);
+    renderQuestions();
+    show('thinking-questions', false);
+    show('questions-block', true);
+    updateEstimateButton();
+    document.getElementById('questions-block').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  async function startEstimateFlow() {
+    show('estimate', false);
+    show('thinking-estimate', true);
+    await delay(1100); // Simulated AI latency
+    const r = mockGenerateEstimate(state.description, state.answers);
+    show('thinking-estimate', false);
+    renderEstimate(r);
+    show('estimate', true);
+    document.getElementById('estimate').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function resetAll() {
+    document.getElementById('desc').value = '';
+    state.description = ''; state.questions = []; state.answers = {};
+    show('thinking-questions', false);
+    show('questions-block', false);
+    show('thinking-estimate', false);
+    show('estimate', false);
+  }
+
+  // --- Event wiring ---
+  document.getElementById('analyze').addEventListener('click', startQuestionFlow);
+  document.getElementById('estimate-btn').addEventListener('click', startEstimateFlow);
+  document.getElementById('back-btn').addEventListener('click', () => {
+    show('questions-block', false);
+    show('estimate', false);
+    document.getElementById('desc').focus();
+  });
+  document.getElementById('reset').addEventListener('click', resetAll);
+  document.getElementById('restart-btn').addEventListener('click', resetAll);
+</script>
+
+</body>
+</html>

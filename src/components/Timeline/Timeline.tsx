@@ -1,29 +1,43 @@
-import React from 'react'
-import { TimelineData } from '../../dto/data'
+import { useTranslation } from 'react-i18next'
+
+import { DialogData } from '../../dto/data'
+import { TIMELINE_ENTRY_IDS, TimelineEntryId } from '../../data/timelineEntries'
 import TimeLineEntry from '../TimelineEntry/TimeLineEntry'
+
 import './Timeline.css'
 
-interface TimeLineProps {
-    timelineData: TimelineData[]
+function asStringArray(value: unknown): string[] {
+    return Array.isArray(value) ? (value as string[]) : []
 }
 
-function TimeLine(prop: TimeLineProps) {
+function asDialogData(value: unknown): DialogData[] {
+    return Array.isArray(value) ? (value as DialogData[]) : []
+}
+
+function TimeLine() {
+    const { t } = useTranslation()
+
+    // Newest first
+    const entries = [...TIMELINE_ENTRY_IDS].reverse() as TimelineEntryId[]
+
     return (
         <div className="timeline">
-            <ul>
-                {prop.timelineData.map((data, i) => (
-                    <li>
-                        <TimeLineEntry
-                            header={data.header}
-                            time={data.time}
-                            even={(i + 1) % 2 === 0}
-                            content={data.contentLines}
-                            dialogData={data.dialogData}
-                        />
-                    </li>
-                ))}
-                <div className="clear"></div>
-            </ul>
+            {entries.map((id) => {
+                const base = `timeline.entries.${id}`
+                return (
+                    <TimeLineEntry
+                        key={id}
+                        header={t(`${base}.header`)}
+                        time={t(`${base}.time`)}
+                        content={asStringArray(
+                            t(`${base}.contentLines`, { returnObjects: true })
+                        )}
+                        dialogData={asDialogData(
+                            t(`${base}.dialogData`, { returnObjects: true })
+                        )}
+                    />
+                )
+            })}
         </div>
     )
 }

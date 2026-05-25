@@ -1,0 +1,292 @@
+{
+  "nav": {
+    "home": "Home",
+    "timeline": "Timeline",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  },
+  "hero": {
+    "role": "Software Developer",
+    "greeting": "Hi, I'm Tomas.",
+    "lead": "I build pragmatic web apps end-to-end — from payment integrations and admin tooling to small one-off forms. Based in Lithuania, available for select side projects.",
+    "ctaQuote": "Get a project quote",
+    "ctaTimeline": "My career timeline →"
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "subhead": "A few things I've built and run in production.",
+    "visit": "Visit site ↗",
+    "screenshotPending": "Screenshot pending",
+    "projects": {
+      "atiduosiu": {
+        "title": "Giveaway marketplace",
+        "desc": "Marketplace for giving things away. Full Montonio payments integration and automatic shipping label generation.",
+        "tags": ["Payments", "Shipping API", "Marketplace"]
+      },
+      "finances": {
+        "title": "Monthly finance planner",
+        "desc": "Personal finance tracker. Log expenses, see what's left this month, and review small analytics on spending patterns.",
+        "tags": ["Personal Finance", "Analytics"]
+      },
+      "food": {
+        "title": "Meal planner",
+        "desc": "Weekly meal planner. Save recipes, plan a week of meals, and auto-generate the grocery list from selected recipes.",
+        "tags": ["Meal Planning", "Recipes"]
+      },
+      "coffee": {
+        "title": "Coffee log",
+        "desc": "Social coffee log. Track what you drink, rate cafés, see where friends are drinking, and browse a feed of recent check-ins.",
+        "tags": ["Social", "Geolocation", "Ratings"]
+      }
+    }
+  },
+  "smallProjects": {
+    "title": "One-pagers & forms",
+    "subhead": "Smaller, focused projects built on tight deadlines.",
+    "wedding": {
+      "title": "Wedding invitation + RSVP",
+      "desc": "Custom invitation with guest RSVP form and an admin dashboard for tracking responses."
+    },
+    "lemonade": {
+      "title": "Lemonade competition registration",
+      "desc": "Single-page registration form for a local lemonade-making competition."
+    }
+  },
+  "quote": {
+    "title": "Project quote",
+    "subhead": "Describe your idea — I'll ask a few clarifying questions and give you a rough estimate.",
+    "disclaimer": "Heads up: this is an AI-generated indicative estimate — not a binding quote. Final pricing depends on exact requirements, integrations, and timeline. We'll firm it up over email.",
+    "describeLabel": "Describe your project",
+    "describePlaceholder": "e.g. A booking site for my photography business. Clients pick a time slot, pay a deposit, and get an email confirmation. I'd like an admin view to see upcoming bookings.",
+    "analyzeBtn": "Ask clarifying questions →",
+    "resetBtn": "Reset",
+    "thinkingQuestions": "Analyzing your description and preparing questions…",
+    "thinkingEstimate": "Calculating estimate based on your answers…",
+    "questionsIntro": "Based on what you described, here are a few things I'd want to confirm:",
+    "estimateBtn": "Get estimate →",
+    "backBtn": "← Edit description",
+    "tooShort": "Please describe your project in at least a sentence so I can ask the right questions.",
+    "estimateLabel": "Estimated investment",
+    "timelineLabel": "Timeline: {{value}}",
+    "emailBtn": "Email me the details →",
+    "restartBtn": "Start over",
+    "summaryLabel": "Summary:",
+    "aiBadge": "AI",
+    "questions": {
+      "type": {
+        "text": "How would you describe the scope?",
+        "options": {
+          "landing": "A simple landing page or form",
+          "webapp": "A full web application",
+          "ecom": "An e-commerce / marketplace",
+          "dashboard": "An internal tool / dashboard"
+        }
+      },
+      "payments": {
+        "text": "Will users pay through the site?",
+        "options": {
+          "none": "No payments",
+          "oneoff": "One-off payments only",
+          "subs": "Subscriptions / recurring",
+          "marketplace": "Marketplace (payouts to multiple sellers)"
+        }
+      },
+      "auth": {
+        "text": "Do users need accounts?",
+        "options": {
+          "none": "No, anonymous use",
+          "simple": "Email + password (or social login)",
+          "roles": "Multiple roles (e.g. admin, customer)"
+        }
+      },
+      "admin": {
+        "text": "Will you need an admin panel?",
+        "options": {
+          "none": "No admin needed",
+          "basic": "Simple — view & edit records",
+          "rich": "Rich — reports, exports, bulk actions"
+        }
+      },
+      "integrations": {
+        "text": "Any 3rd-party integrations to consider?",
+        "placeholder": "e.g. Stripe, SendGrid, shipping API, Google Sheets…"
+      },
+      "timeline": {
+        "text": "What's your ideal timeline?",
+        "options": {
+          "relaxed": "Relaxed — 2+ months is fine",
+          "normal": "Normal — about a month",
+          "rush": "Rush — 2 weeks or less"
+        }
+      },
+      "design": {
+        "text": "How should the design come together?",
+        "options": {
+          "bring": "I have designs ready (Figma, etc.)",
+          "basic": "Clean & simple — you choose",
+          "custom": "Full custom design needed"
+        }
+      }
+    },
+    "breakdown": {
+      "base": "Base — {{type}}",
+      "payments": "Payments — {{label}}",
+      "auth": "Auth — {{label}}",
+      "admin": "Admin — {{label}}",
+      "integrations": "Integrations ({{count}})",
+      "design": "Design — {{label}}",
+      "timelineMod": "Timeline ({{urgency}}) ×{{mult}}"
+    }
+  },
+  "timelinePage": {
+    "eyebrow": "Career",
+    "title": "Where I've been",
+    "subhead": "Roles, projects, and milestones — roughly in order. Click any card with more detail to see the full story.",
+    "readMore": "Read more →",
+    "showLess": "Show less ↑",
+    "loading": "Loading…"
+  },
+  "timeline": {
+    "entries": {
+      "childhood": {
+        "header": "Childhood",
+        "time": "Early years",
+        "contentLines": [
+          "I grew up in a small village in northern Lithuania."
+        ],
+        "dialogData": [
+          { "text": "I grew up in a small village in Lithuania called Moškėnai. There are only a few houses there, and a forest just nearby." },
+          { "text": "I spent a lot of time outside or curled up at home reading books." }
+        ]
+      },
+      "highschool": {
+        "header": "High school",
+        "time": "Until June 2014",
+        "contentLines": [
+          "Even before finishing school, I knew what I wanted to do — so it was easy to pick my exams and decide on a university.",
+          "I took the required exams, finished high school, and got into the university I wanted."
+        ],
+        "dialogData": [
+          { "text": "I went to school in the nearest city — Rokiškis." },
+          { "text": "My grades were never perfect, but I never had bad ones either. I liked the sciences — informatics, math, physics — and also English and history. A second foreign language (Russian) was harder for me, and I never became proficient at it." },
+          { "text": "For the last two years of high school we had to choose subjects to specialize in. Most people struggled with the choice, but I already knew I wanted to study information technologies, so picking was easy." },
+          {
+            "text": "Before finishing high school we had to choose and pass exams. I took five:",
+            "list": [
+              "Lithuanian language",
+              "English language",
+              "Informatics",
+              "Math",
+              "Physics"
+            ],
+            "secondText": "Informatics and Physics were my best results. After the exams I applied to university and got accepted by my first pick."
+          }
+        ]
+      },
+      "university": {
+        "header": "University",
+        "time": "September 2014",
+        "contentLines": [
+          "I studied Informatics Engineering at Kaunas University of Technology.",
+          "Subjects included programming, databases, cyber security, mathematics, and statistics."
+        ],
+        "dialogData": [
+          { "text": "I did my Bachelor's in Informatics Engineering at Kaunas University of Technology over four years." },
+          { "text": "The first two years cover more general subjects: math, physics, philosophy, statistics, data structures. After that the tracks split and the specialization subjects begin." },
+          { "text": "From the first semester we started learning C++. The course began with the basics, but the pace was fast, so you had to stay attentive to keep up." },
+          { "text": "The next year brought Java and PHP across several subjects. We also took a databases course, learning about different database types, normalization, and building one from scratch." },
+          { "text": "In the third year we had cyber security and embedded systems modules. We also got free elective credits — I picked API programming and game development." },
+          { "text": "My bachelor's project was a problem-tracking system for IT engineers. It was web-based, built with Angular and Material UI on the front end and .NET on the API side." }
+        ]
+      },
+      "internship": {
+        "header": "First internship",
+        "time": "Summer 2015",
+        "contentLines": [
+          "After my first year of university I went looking for an internship.",
+          "I was still aspiring to be an IT engineer, so I joined \"Baltnetos Komunikacijos\".",
+          "By the end of it I understood the IT engineer path wasn't for me."
+        ],
+        "dialogData": [
+          { "text": "I applied and got accepted to Baltnetos Komunikacijos — a company providing IT infrastructure and maintenance to other businesses. I assisted two engineers with their daily work." },
+          { "text": "I worked there for two months. I learned more about computers, picked up some maintenance tricks, and got a real feel for the day-to-day of an IT engineer." },
+          { "text": "But most of the tasks were dull and repetitive — usually ending in reinstalling an operating system. After thinking it over, I decided it wasn't something I wanted to pursue." }
+        ]
+      },
+      "internship2": {
+        "header": "Internship — take two",
+        "time": "Summer 2016",
+        "contentLines": [
+          "The next summer I started another internship — this time as a Software Developer at Visma.",
+          "I worked on a team of four over three months, and stayed on at the company afterwards."
+        ],
+        "dialogData": [
+          { "text": "After finishing my second year, I decided it was time for another internship — this time aimed at the Software Developer role." },
+          { "text": "I took the entrance test, passed, and got accepted for a Software Developer internship at Visma Lietuva." },
+          { "text": "I started alongside three other interns. The first two weeks were exercises focused on the fundamentals of programming." },
+          { "text": "When the internship ended, I stayed on and joined Visma Lietuva full-time." }
+        ]
+      },
+      "visma": {
+        "header": "Working at Visma",
+        "time": "September 2016",
+        "contentLines": [
+          "After the internship I joined Visma as a Junior Software Developer.",
+          "I worked at Visma for nearly two years, mostly on integrations."
+        ],
+        "dialogData": [
+          { "text": "After the internship I joined Visma as a Junior Software Developer." },
+          { "text": "For most of those two years I worked on integrations between Visma's in-house systems." },
+          { "text": "I worked alone most of the time, which helped solidify my problem-solving skills. But it also got harder to improve without anyone pointing out what I was doing wrong, and there were stretches without enough work to pick up. The situation wasn't going to change soon, so I decided to move on." }
+        ]
+      },
+      "devbridge": {
+        "header": "Working at Devbridge",
+        "time": "June 2018",
+        "contentLines": [
+          "After leaving Visma I joined Devbridge.",
+          "I worked on a variety of projects there and grew into a Software Developer role."
+        ],
+        "dialogData": [
+          { "text": "After leaving Visma and finishing my studies, I joined Devbridge." },
+          { "text": "I already had some Software Developer experience when I arrived, so I was assigned to a project right away. The stack was familiar: .NET on the back end and Angular on the front." },
+          { "text": "Devbridge is a services company, building products for other enterprises. During my time there I worked on four different projects." },
+          { "text": "My last project was a .NET microservices system built with Domain-Driven Design. The one before that was a Node.js project — plenty of variety and different challenges along the way." }
+        ]
+      },
+      "csharpcert": {
+        "header": "Microsoft C# certificate",
+        "time": "November 2019",
+        "contentLines": [
+          "Since I'd been programming with .NET for a while, I wanted to formalize it with a C# certificate.",
+          "I finally took the exam in November 2019 and became a certified C# Developer."
+        ],
+        "dialogData": [
+          { "text": "I studied for the exam using a Pluralsight course and a fairly thick book on programming in C#." },
+          { "text": "The certificate itself doesn't unlock much, but I enjoyed the challenge and learned some new things about .NET and the C# language along the way." }
+        ]
+      },
+      "railsr": {
+        "header": "Railsr",
+        "time": "January 2022",
+        "contentLines": [
+          "At the start of 2022 I joined Railsr."
+        ],
+        "dialogData": [
+          { "text": "After more than three years at Devbridge, it was time for a change. I joined the banking startup Railsr — a mostly back-end role focused on banking APIs." }
+        ]
+      },
+      "future": {
+        "header": "Future",
+        "time": "Ahead",
+        "contentLines": [
+          "Who knows what's next?"
+        ],
+        "dialogData": [
+          { "text": "I've been a Software Developer for a few years now, but the future still excites me — and I'm happy with where I am today." }
+        ]
+      }
+    }
+  },
+  "footer": "© Tomas Valiūnas"
+}

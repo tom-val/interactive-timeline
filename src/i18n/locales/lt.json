@@ -1,0 +1,292 @@
+{
+  "nav": {
+    "home": "Pradžia",
+    "timeline": "Karjera",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  },
+  "hero": {
+    "role": "Programuotojas",
+    "greeting": "Sveiki, aš Tomas.",
+    "lead": "Kuriu praktiškas internetines programas nuo pradžios iki galo — nuo mokėjimų integracijų ir administracinių įrankių iki mažų vienkartinių formų. Iš Lietuvos, atviras pasirinktiems projektams.",
+    "ctaQuote": "Gauti projekto kainos pasiūlymą",
+    "ctaTimeline": "Mano karjeros istorija →"
+  },
+  "portfolio": {
+    "title": "Portfelis",
+    "subhead": "Keletas dalykų, kuriuos sukūriau ir prižiūriu produkcijoje.",
+    "visit": "Apsilankyti ↗",
+    "screenshotPending": "Ekrano nuotrauka netrukus",
+    "projects": {
+      "atiduosiu": {
+        "title": "Atiduotuvė",
+        "desc": "Platforma daiktams atiduoti. Pilna Montonio mokėjimų integracija ir automatinis siuntimo etikečių generavimas.",
+        "tags": ["Mokėjimai", "Siuntimo API", "Platforma"]
+      },
+      "finances": {
+        "title": "Mėnesio finansų planavimas",
+        "desc": "Asmeninių finansų sekimo įrankis. Registruokite išlaidas, matykite, kiek liko šį mėnesį, ir peržiūrėkite išlaidų analitiką.",
+        "tags": ["Finansai", "Analitika"]
+      },
+      "food": {
+        "title": "Maisto planavimas",
+        "desc": "Savaitinis valgiaraščio planuoklis. Išsaugokite receptus, suplanuokite savaitės maistą ir automatiškai sugeneruokite pirkinių sąrašą.",
+        "tags": ["Valgiaraštis", "Receptai"]
+      },
+      "coffee": {
+        "title": "Kava",
+        "desc": "Socialinis kavos dienoraštis. Sekite, ką geriate, vertinkite kavines, matykite, kur geria draugai, ir naršykite naujausių įvykių srautą.",
+        "tags": ["Socialinis", "Vietos", "Vertinimai"]
+      }
+    }
+  },
+  "smallProjects": {
+    "title": "Vienkartiniai projektai ir formos",
+    "subhead": "Mažesni, fokusuoti projektai sukurti per trumpą laiką.",
+    "wedding": {
+      "title": "Vestuvių kvietimas + RSVP",
+      "desc": "Individualus kvietimas su svečių RSVP forma ir administratoriaus skydeliu atsakymams stebėti."
+    },
+    "lemonade": {
+      "title": "Limonado konkurso registracija",
+      "desc": "Vieno puslapio registracijos forma vietiniam limonado gaminimo konkursui."
+    }
+  },
+  "quote": {
+    "title": "Projekto kainos pasiūlymas",
+    "subhead": "Aprašykite savo idėją — užduosiu kelis tikslinančius klausimus ir pateiksiu apytikslį įvertinimą.",
+    "disclaimer": "Atkreipkite dėmesį: tai DI sugeneruotas orientacinis įvertinimas — ne galutinis pasiūlymas. Galutinė kaina priklauso nuo tikslių reikalavimų, integracijų ir terminų. Detales suderinsime el. paštu.",
+    "describeLabel": "Aprašykite savo projektą",
+    "describePlaceholder": "pvz. Rezervacijos svetainė mano fotografijos verslui. Klientai pasirenka laiką, sumoka avansą ir gauna patvirtinimą el. paštu. Norėčiau administratoriaus rodinio būsimoms rezervacijoms peržiūrėti.",
+    "analyzeBtn": "Užduoti tikslinančius klausimus →",
+    "resetBtn": "Atstatyti",
+    "thinkingQuestions": "Analizuoju jūsų aprašymą ir ruošiu klausimus…",
+    "thinkingEstimate": "Skaičiuoju įvertinimą pagal jūsų atsakymus…",
+    "questionsIntro": "Pagal jūsų aprašymą, štai keli dalykai, kuriuos norėčiau patikslinti:",
+    "estimateBtn": "Gauti įvertinimą →",
+    "backBtn": "← Redaguoti aprašymą",
+    "tooShort": "Prašome aprašyti savo projektą bent vienu sakiniu, kad galėčiau užduoti tinkamus klausimus.",
+    "estimateLabel": "Apytikslė investicija",
+    "timelineLabel": "Terminas: {{value}}",
+    "emailBtn": "Atsiųskite man detales →",
+    "restartBtn": "Pradėti iš naujo",
+    "summaryLabel": "Santrauka:",
+    "aiBadge": "DI",
+    "questions": {
+      "type": {
+        "text": "Kaip apibūdintumėte projekto apimtį?",
+        "options": {
+          "landing": "Paprastas puslapis arba forma",
+          "webapp": "Pilnavertė internetinė programa",
+          "ecom": "El. parduotuvė / platforma",
+          "dashboard": "Vidinis įrankis / valdymo skydelis"
+        }
+      },
+      "payments": {
+        "text": "Ar vartotojai mokės per svetainę?",
+        "options": {
+          "none": "Be mokėjimų",
+          "oneoff": "Tik vienkartiniai mokėjimai",
+          "subs": "Prenumeratos / pasikartojantys",
+          "marketplace": "Platforma (išmokos keliems pardavėjams)"
+        }
+      },
+      "auth": {
+        "text": "Ar vartotojams reikės paskyrų?",
+        "options": {
+          "none": "Ne, anoniminis naudojimas",
+          "simple": "El. paštas + slaptažodis (arba socialinis prisijungimas)",
+          "roles": "Kelios rolės (pvz. administratorius, klientas)"
+        }
+      },
+      "admin": {
+        "text": "Ar reikės administratoriaus skydelio?",
+        "options": {
+          "none": "Administracinio skydelio nereikia",
+          "basic": "Paprastas — peržiūrėti ir redaguoti įrašus",
+          "rich": "Pilnas — ataskaitos, eksportai, masiniai veiksmai"
+        }
+      },
+      "integrations": {
+        "text": "Ar yra integracijų su trečiosiomis šalimis?",
+        "placeholder": "pvz. Stripe, SendGrid, siuntimo API, Google Sheets…"
+      },
+      "timeline": {
+        "text": "Koks jūsų idealus terminas?",
+        "options": {
+          "relaxed": "Lankstus — 2+ mėnesiai tinka",
+          "normal": "Įprastas — apie mėnesį",
+          "rush": "Skubu — 2 savaitės ar mažiau"
+        }
+      },
+      "design": {
+        "text": "Kaip turėtų atrodyti dizainas?",
+        "options": {
+          "bring": "Turiu paruoštą dizainą (Figma ar pan.)",
+          "basic": "Švarus ir paprastas — jūs pasirinkit",
+          "custom": "Reikia pilno individualaus dizaino"
+        }
+      }
+    },
+    "breakdown": {
+      "base": "Bazinė — {{type}}",
+      "payments": "Mokėjimai — {{label}}",
+      "auth": "Autentifikacija — {{label}}",
+      "admin": "Administracinis — {{label}}",
+      "integrations": "Integracijos ({{count}})",
+      "design": "Dizainas — {{label}}",
+      "timelineMod": "Terminas ({{urgency}}) ×{{mult}}"
+    }
+  },
+  "timelinePage": {
+    "eyebrow": "Karjera",
+    "title": "Mano kelias",
+    "subhead": "Pareigos, projektai ir įvykiai — apytiksliai chronologine tvarka. Spustelėkite kortelę su daugiau informacijos, kad pamatytumėte visą istoriją.",
+    "readMore": "Plačiau →",
+    "showLess": "Suskleisti ↑",
+    "loading": "Kraunama…"
+  },
+  "timeline": {
+    "entries": {
+      "childhood": {
+        "header": "Vaikystė",
+        "time": "Ankstyvieji metai",
+        "contentLines": [
+          "Užaugau mažame kaimelyje šiaurės Lietuvoje."
+        ],
+        "dialogData": [
+          { "text": "Užaugau Lietuvoje, mažame kaimelyje pavadinimu Moškėnai. Ten yra tik keli namai, o visai šalia — miškas." },
+          { "text": "Daug laiko praleisdavau lauke arba jaukiai įsitaisęs namuose su knyga." }
+        ]
+      },
+      "highschool": {
+        "header": "Vidurinė mokykla",
+        "time": "Iki 2014 m. birželio",
+        "contentLines": [
+          "Dar prieš baigdamas mokyklą žinojau, ką noriu veikti — todėl egzaminų pasirinkimas ir universiteto sprendimas atėjo lengvai.",
+          "Išlaikiau privalomus egzaminus, baigiau mokyklą ir įstojau į norimą universitetą."
+        ],
+        "dialogData": [
+          { "text": "Mokiausi artimiausiame mieste — Rokiškyje." },
+          { "text": "Mano pažymiai nebuvo idealūs, bet ir blogų niekada neturėjau. Patiko tikslieji mokslai — informatika, matematika, fizika — taip pat anglų kalba ir istorija. Antroji užsienio kalba (rusų) man sekėsi sunkiau, todėl niekada jos puikiai neišmokau." },
+          { "text": "Paskutinius dvejus mokyklos metus turėjome pasirinkti dalykus, kuriais norime specializuotis. Daugumai buvo sunku apsispręsti, bet aš jau žinojau, kad noriu studijuoti informacines technologijas, todėl pasirinkimas buvo paprastas." },
+          {
+            "text": "Prieš baigiant mokyklą reikėjo pasirinkti ir išlaikyti egzaminus. Laikiau penkis:",
+            "list": [
+              "Lietuvių kalba",
+              "Anglų kalba",
+              "Informatika",
+              "Matematika",
+              "Fizika"
+            ],
+            "secondText": "Geriausi rezultatai buvo informatikos ir fizikos. Po egzaminų pateikiau prašymą universitetui ir buvau priimtas į pirmąjį pasirinkimą."
+          }
+        ]
+      },
+      "university": {
+        "header": "Universitetas",
+        "time": "2014 m. rugsėjis",
+        "contentLines": [
+          "Studijavau Informatikos inžineriją Kauno technologijos universitete.",
+          "Dalykai: programavimas, duomenų bazės, kibernetinis saugumas, matematika, statistika."
+        ],
+        "dialogData": [
+          { "text": "Bakalauro studijos Informatikos inžinerijos kryptyje Kauno technologijos universitete truko ketverius metus." },
+          { "text": "Pirmieji dveji metai daugiau apima bendrus dalykus: matematiką, fiziką, filosofiją, statistiką, duomenų struktūras. Vėliau kryptys išsiskiria ir prasideda specializacijos dalykai." },
+          { "text": "Nuo pat pirmojo semestro pradėjau mokytis C++. Kursas prasidėjo nuo pagrindų, bet tempas buvo greitas — reikėjo nuolat dėmesio, kad neatsiliktum." },
+          { "text": "Kitais metais keliuose dalykuose naudojome Java ir PHP. Taip pat turėjome duomenų bazių kursą: skirtingi duomenų bazių tipai, normalizacija, ir reikėjo nuo nulio sukurti savo bazę." },
+          { "text": "Trečiame kurse buvo kibernetinio saugumo ir įterptinių sistemų moduliai. Taip pat gavome laisvai pasirenkamų kreditų — pasirinkau API programavimą ir žaidimų kūrimą." },
+          { "text": "Bakalauro projektas — problemų registravimo sistema IT inžinieriams. Internetinė sistema, sukurta su Angular ir Material UI priekyje bei .NET API užkulisiuose." }
+        ]
+      },
+      "internship": {
+        "header": "Pirmoji praktika",
+        "time": "2015 m. vasara",
+        "contentLines": [
+          "Po pirmojo universiteto kurso pradėjau ieškoti praktikos vietos.",
+          "Tuomet dar svajojau būti IT inžinieriumi, todėl pradėjau praktiką \"Baltnetos komunikacijose\".",
+          "Pasibaigus praktikai supratau, kad IT inžinieriaus kelias — ne man."
+        ],
+        "dialogData": [
+          { "text": "Pateikiau prašymą ir buvau priimtas į praktiką Baltnetos komunikacijose — įmonėje, padedančioje kitiems verslams su IT infrastruktūra ir priežiūra. Padėjau dviem inžinieriams jų kasdieniame darbe." },
+          { "text": "Dirbau ten du mėnesius. Daugiau sužinojau apie kompiuterius, išmokau keletą IT priežiūros gudrybių ir geriau pajaučiau IT inžinieriaus kasdienybę." },
+          { "text": "Bet didžioji dalis užduočių buvo nuobodžios ir pasikartojančios — dažniausiai baigdavosi operacinės sistemos perdiegimu. Po apmąstymų nusprendžiau, kad tai ne tas kelias, kuriuo noriu eiti." }
+        ]
+      },
+      "internship2": {
+        "header": "Praktika — antras kartas",
+        "time": "2016 m. vasara",
+        "contentLines": [
+          "Kitą vasarą pradėjau dar vieną praktiką — šįkart kaip Programuotojas Vismoje.",
+          "Tris mėnesius dirbau su trimis kolegomis, o vėliau ten pat ir pasilikau dirbti."
+        ],
+        "dialogData": [
+          { "text": "Baigęs antrąjį kursą nusprendžiau, kad metas naujai praktikai — šįkart Programuotojo vaidmenyje." },
+          { "text": "Išlaikiau testą, jį praėjau ir buvau priimtas į Programuotojo praktiką Visma Lietuva." },
+          { "text": "Praktiką pradėjau su trimis kitais priimtais kolegomis. Pirmas dvi savaites darėme užduotis, skirtas geriau įsisavinti programavimo pagrindus." },
+          { "text": "Pasibaigus praktikai pradėjau dirbti Visma Lietuva." }
+        ]
+      },
+      "visma": {
+        "header": "Darbas Vismoje",
+        "time": "2016 m. rugsėjis",
+        "contentLines": [
+          "Pasibaigus praktikai pradėjau dirbti Vismoje Jaunesniuoju Programuotoju.",
+          "Vismoje dirbau beveik dvejus metus, didžiąją dalį laiko prie integracijų."
+        ],
+        "dialogData": [
+          { "text": "Pasibaigus praktikai pradėjau dirbti Vismoje Jaunesniuoju Programuotoju." },
+          { "text": "Beveik visus dvejus metus dirbau su integracijomis tarp Vismos vidaus sistemų." },
+          { "text": "Dirbau dažniausiai vienas — tai padėjo sustiprinti problemų sprendimo įgūdžius. Bet tuo pačiu vis sunkiau buvo tobulėti be kažkieno grįžtamojo ryšio, o kartais užduočių paprasčiausiai pritrūkdavo. Matydamas, kad situacija greitai nesikeis, nusprendžiau judėti toliau." }
+        ]
+      },
+      "devbridge": {
+        "header": "Darbas Devbridge",
+        "time": "2018 m. birželis",
+        "contentLines": [
+          "Po Vismos pradėjau dirbti Devbridge.",
+          "Dirbau prie įvairių projektų ir užaugau iki Programuotojo pozicijos."
+        ],
+        "dialogData": [
+          { "text": "Palikęs Vismą ir baigęs studijas pradėjau dirbti Devbridge." },
+          { "text": "Atėjau jau turėdamas šiek tiek Programuotojo patirties, todėl iškart buvau priskirtas prie projekto. Technologijų rinkinys buvo pažįstamas: .NET užkulisiuose ir Angular priekyje." },
+          { "text": "Devbridge yra paslaugų įmonė, kurianti produktus kitoms įmonėms. Per visą laiką ten dirbau prie keturių skirtingų projektų." },
+          { "text": "Paskutinis projektas buvo .NET mikroservisų sistema, sukurta naudojant Domain-Driven Design. Prieš tai dirbau prie Node.js projekto — buvo daug įvairovės ir įvairių iššūkių." }
+        ]
+      },
+      "csharpcert": {
+        "header": "Microsoft C# sertifikatas",
+        "time": "2019 m. lapkritis",
+        "contentLines": [
+          "Kadangi jau kurį laiką programavau su .NET, norėjau tai įforminti C# sertifikatu.",
+          "Galiausiai 2019 m. lapkritį išlaikiau egzaminą ir tapau sertifikuotu C# Programuotoju."
+        ],
+        "dialogData": [
+          { "text": "Egzaminui ruošiausi naudodamas Pluralsight kursą ir gana storą knygą apie programavimą su C#." },
+          { "text": "Pats sertifikatas didelės naudos neduoda, bet patiko iššūkis ir kelyje sužinojau naujų dalykų apie .NET bei C# kalbą." }
+        ]
+      },
+      "railsr": {
+        "header": "Railsr",
+        "time": "2022 m. sausis",
+        "contentLines": [
+          "2022 m. pradžioje pradėjau dirbti Railsr."
+        ],
+        "dialogData": [
+          { "text": "Po daugiau nei trejų metų Devbridge buvo metas pokyčiams. Pradėjau dirbti bankininkystės startuolyje Railsr — daugiausia užkulisinio kodo (back-end) pozicija, orientuota į bankininkystės API." }
+        ]
+      },
+      "future": {
+        "header": "Ateitis",
+        "time": "Priekyje",
+        "contentLines": [
+          "Kas žino, kas laukia toliau?"
+        ],
+        "dialogData": [
+          { "text": "Programuotoju esu jau ne vienerius metus, bet ateitis vis dar kelia susidomėjimą — ir džiaugiuosi, kad esu ten, kur esu šiandien." }
+        ]
+      }
+    }
+  },
+  "footer": "© Tomas Valiūnas"
+}
