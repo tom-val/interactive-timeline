@@ -6,24 +6,34 @@ on:
       - main
   pull_request:
 
+env:
+  AWS_REGION: eu-west-1
+  PROJECT_NAME: personal-cv-page
+  NODE_VERSION: "22"
+
 jobs:
   deploy_infrastructure:
     name: Deploy new application version to AWS
     runs-on: ubuntu-latest
+    environment: Prod
     defaults:
       run:
         working-directory: infrastructure
+    env:
+      TF_VAR_openai_api_key: ${{ secrets.OPENAI_API_KEY }}
+      TF_VAR_admin_key: ${{ secrets.QUOTE_ADMIN_KEY }}
+      TF_VAR_notify_email: ${{ secrets.QUOTE_NOTIFY_EMAIL }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v1
+        uses: hashicorp/setup-terraform@v3
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-west-1
+          aws-region: ${{ env.AWS_REGION }}
       - name: Terraform Format
         id: fmt
         run: terraform fmt -check
@@ -39,7 +49,7 @@ jobs:
         run: terraform plan -no-color -input=false
         continue-on-error: true
       - name: Update Pull Request
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         if: github.event_name == 'pull_request'
         env:
           PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
@@ -73,27 +83,69 @@ jobs:
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve -input=false
-  upload_code:
-    name: Upload code to AWS bucket
+
+  deploy_lambdas:
+    name: Build & deploy quote lambdas
     runs-on: ubuntu-latest
     needs: deploy_infrastructure
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    environment: Prod
+    strategy:
+      matrix:
+        lambda:
+          - dir: quote-api
+            fn:  personal-cv-page-quote-api
+          - dir: quote-processor
+            fn:  personal-cv-page-quote-processor
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-west-1
-      - name: Setup node
-        uses: actions/setup-node@v3
+          aws-region: ${{ env.AWS_REGION }}
+      - name: Install lambda deps
+        working-directory: backend/${{ matrix.lambda.dir }}
+        run: npm install --omit=dev
+      - name: Package
+        working-directory: backend/${{ matrix.lambda.dir }}
+        run: zip -qr function.zip . -x "*.log" "*.zip" ".git/*"
+      - name: Deploy to AWS Lambda
+        working-directory: backend/${{ matrix.lambda.dir }}
+        run: |
+          aws lambda update-function-code \
+            --function-name ${{ matrix.lambda.fn }} \
+            --zip-file fileb://function.zip \
+            --no-cli-pager
+
+  upload_code:
+    name: Build & upload frontend to S3
+    runs-on: ubuntu-latest
+    needs: deploy_infrastructure
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    environment: Prod
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
         with:
-          node-version: 14
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
       - name: Install dependencies
         run: npm install
       - name: Build application
-        run: npm run-script build
-      - name: Build application
-        run: aws s3 cp --recursive --acl public-read build/ "s3://personal-cv-page/"
+        run: npm run build
+      - name: Upload to S3
+        run: aws s3 cp --recursive --acl public-read build/ "s3://${{ env.PROJECT_NAME }}/"
