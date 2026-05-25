@@ -62,7 +62,8 @@ export default function QuoteEstimator() {
             setQuestions(qs)
             setPhase('questions')
         } catch (e) {
-            setError(e instanceof Error ? e.message : String(e))
+            console.error('[QuoteEstimator] questions failed:', e)
+            setError(t('quote.aiError'))
             setPhase('idle')
         }
     }
@@ -77,7 +78,8 @@ export default function QuoteEstimator() {
             setEstimate(r)
             setPhase('estimate')
         } catch (e) {
-            setError(e instanceof Error ? e.message : String(e))
+            console.error('[QuoteEstimator] estimate failed:', e)
+            setError(t('quote.aiError'))
             setPhase('questions')
         }
     }
@@ -106,7 +108,8 @@ export default function QuoteEstimator() {
             })
             setPhase('submitted')
         } catch (e) {
-            setContactError(e instanceof Error ? e.message : String(e))
+            console.error('[QuoteEstimator] submit failed:', e)
+            setContactError(t('quote.submitError'))
             setPhase('contact')
         }
     }

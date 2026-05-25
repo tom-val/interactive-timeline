@@ -85,6 +85,9 @@ async function runEstimate({ description, answers, locale }) {
 }
 
 async function callOpenAi(systemPrompt, userText) {
+  // The Responses API enforces that user-provided input mentions "json"
+  // somewhere when `text.format` is `json_object`. Prepend the directive
+  // (the recipes processor uses the same pattern).
   const res = await fetch("https://api.openai.com/v1/responses", {
     method: "POST",
     headers: {
@@ -94,7 +97,10 @@ async function callOpenAi(systemPrompt, userText) {
     body: JSON.stringify({
       model: OPENAI_MODEL,
       instructions: systemPrompt,
-      input: [{ role: "user", content: userText }],
+      input: [
+        { role: "user", content: "Respond in JSON format." },
+        { role: "user", content: userText },
+      ],
       text: { format: { type: "json_object" } },
       max_output_tokens: 4000,
     }),

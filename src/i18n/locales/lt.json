@@ -10,7 +10,8 @@
     "greeting": "Sveiki, aš Tomas.",
     "lead": "Kuriu praktiškas internetines programas nuo pradžios iki galo — nuo mokėjimų integracijų ir administracinių įrankių iki mažų vienkartinių formų. Iš Lietuvos, atviras pasirinktiems projektams.",
     "ctaQuote": "Gauti projekto kainos pasiūlymą",
-    "ctaTimeline": "Mano karjeros istorija →"
+    "ctaTimeline": "Mano karjeros istorija →",
+    "elsewhere": "Rasti mane kitur"
   },
   "portfolio": {
     "title": "Portfelis",
@@ -84,6 +85,8 @@
     "contactNameRequired": "Įveskite savo vardą.",
     "contactEmailRequired": "Įveskite teisingą el. pašto adresą.",
     "contactNoJob": "Kažkas nepavyko — perkraukite puslapį ir bandykite dar kartą.",
+    "aiError": "Kažkas nepavyko — pabandykite dar kartą po akimirkos.",
+    "submitError": "Šiuo metu nepavyko išsiųsti — pabandykite po akimirkos.",
     "thanksTitle": "Ačiū — gavau!",
     "thanksBody": "Peržiūrėsiu jūsų užklausą ir netrukus susisieksiu.",
     "thanksReset": "Pradėti naują užklausą",

@@ -10,7 +10,8 @@
     "greeting": "Hi, I'm Tomas.",
     "lead": "I build pragmatic web apps end-to-end — from payment integrations and admin tooling to small one-off forms. Based in Lithuania, available for select side projects.",
     "ctaQuote": "Get a project quote",
-    "ctaTimeline": "My career timeline →"
+    "ctaTimeline": "My career timeline →",
+    "elsewhere": "Find me elsewhere"
   },
   "portfolio": {
     "title": "Portfolio",
@@ -84,6 +85,8 @@
     "contactNameRequired": "Please enter your name.",
     "contactEmailRequired": "Please enter a valid email address.",
     "contactNoJob": "Something went wrong — please reload and try again.",
+    "aiError": "Something went wrong — please try again in a moment.",
+    "submitError": "Couldn't send right now — please try again in a moment.",
     "thanksTitle": "Thanks — got it!",
     "thanksBody": "I'll review your request and get back to you soon.",
     "thanksReset": "Start a new quote",
