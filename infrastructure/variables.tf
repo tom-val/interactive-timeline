@@ -27,7 +27,7 @@ variable "openai_api_key" {
 variable "openai_model" {
   type        = string
   description = "OpenAI model id for the quote processor (Responses API)."
-  default     = "gpt-4o-mini"
+  default     = "gpt-5.5"
 }
 
 variable "admin_key" {
