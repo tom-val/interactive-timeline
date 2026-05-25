@@ -76,18 +76,23 @@ async function startQuestionsJob({ description, locale }) {
   return json(202, { jobId: job.jobId });
 }
 
-async function startEstimateJob({ description, answers, locale }) {
+async function startEstimateJob({ description, answers, questions, locale }) {
   const err = validateDescription(description);
   if (err) return json(400, { error: err });
   if (!answers || typeof answers !== "object") {
     return json(400, { error: "Answers required." });
   }
 
+  // Persist the questions array alongside the answers so we can resolve answer
+  // values back to human-readable labels at submission time.
+  const safeQuestions = Array.isArray(questions) ? questions : [];
+
   const job = await createJob({
     type: "estimate",
     request: {
       description: description.trim(),
       answers,
+      questions: safeQuestions,
       locale: locale || "en",
     },
   });
@@ -133,6 +138,9 @@ async function submit({ jobId, name, email, message }) {
 
   const submissionId = randomUUID();
   const createdAt = new Date().toISOString();
+  const answers = job.request?.answers ?? {};
+  const questions = job.request?.questions ?? [];
+
   const submission = {
     submissionId,
     all: "all", // GSI partition
@@ -143,7 +151,8 @@ async function submit({ jobId, name, email, message }) {
     jobId,
     jobType: job.type,
     description: job.request?.description ?? "",
-    answers: job.request?.answers ?? {},
+    answers,
+    qa: resolveQa(questions, answers),
     locale: job.request?.locale ?? "en",
     estimate: job.response ?? null,
   };
@@ -261,15 +270,54 @@ function formatSnsMessage(s) {
       `Timeline shown:  ${s.estimate.timeline ?? "?"}`,
     );
   }
-  if (s.answers && Object.keys(s.answers).length) {
-    lines.push("", `Their answers:`);
-    for (const [k, v] of Object.entries(s.answers)) lines.push(`  ${k}: ${v}`);
+  if (Array.isArray(s.qa) && s.qa.length) {
+    lines.push("", `Q&A:`);
+    for (const qa of s.qa) {
+      lines.push(`  Q: ${qa.questionText}`, `  A: ${qa.answerLabel}`, "");
+    }
   }
   lines.push(
-    "",
     `View all submissions: https://${SITE_DOMAIN}/api/admin/quotes?key=...`,
   );
   return lines.join("\n");
+}
+
+/**
+ * Resolve raw answer values (e.g. { timeline: "normal" }) into human-readable
+ * Q&A pairs (e.g. { questionText: "What's your timeline?",
+ * answerLabel: "Normal — about a month" }) using the original questions array.
+ */
+function resolveQa(questions, answers) {
+  if (!Array.isArray(questions) || !answers || typeof answers !== "object") return [];
+  const qa = [];
+  // Preserve the original question order
+  for (const q of questions) {
+    const value = answers[q.id];
+    if (value === undefined || value === null || value === "") continue;
+    let answerLabel = String(value);
+    if (q.type === "choice" && Array.isArray(q.options)) {
+      const opt = q.options.find((o) => o.value === value);
+      if (opt && opt.label) answerLabel = opt.label;
+    }
+    qa.push({
+      id: q.id,
+      questionText: q.text || q.id,
+      value: String(value),
+      answerLabel,
+    });
+  }
+  // Include any answers whose question we no longer have (shouldn't happen, but
+  // be defensive so nothing silently goes missing).
+  for (const [id, value] of Object.entries(answers)) {
+    if (qa.find((x) => x.id === id)) continue;
+    qa.push({
+      id,
+      questionText: id,
+      value: String(value),
+      answerLabel: String(value),
+    });
+  }
+  return qa;
 }
 
 // --- Admin HTML --------------------------------------------------------------
@@ -305,6 +353,10 @@ function renderAdminHtml(items) {
   .detail h3 { margin: 14px 0 6px; font-size:0.78rem; text-transform:uppercase; letter-spacing:1.2px; color: var(--muted); }
   .detail pre { background:#f5f5f5; padding:10px 12px; border-radius:6px; font-size:0.85rem; white-space:pre-wrap; word-wrap:break-word; margin:0; }
   .detail .kv { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size:0.82rem; color: var(--muted); }
+  .qa { margin:0; padding:6px 0 0; }
+  .qa dt { font-weight:600; color: var(--ink); font-size:0.88rem; margin-top:8px; }
+  .qa dt:first-of-type { margin-top:0; }
+  .qa dd { margin: 2px 0 0; padding: 4px 10px; background:#f5f5f5; border-radius:4px; font-size:0.88rem; color: var(--muted); display:inline-block; }
   .empty { color: var(--muted); text-align:center; padding:60px 0; }
 </style>
 </head>
@@ -325,9 +377,16 @@ function renderRow(s) {
   const est = s.estimate
     ? `€${escapeHtml(String(s.estimate.low ?? "?"))} – €${escapeHtml(String(s.estimate.high ?? "?"))}`
     : "—";
-  const answers = s.answers && Object.keys(s.answers).length
-    ? Object.entries(s.answers).map(([k, v]) => `  ${k}: ${v}`).join("\n")
-    : "(none)";
+
+  const qaHtml = Array.isArray(s.qa) && s.qa.length
+    ? `<dl class="qa">${
+        s.qa.map((qa) => `
+          <dt>${escapeHtml(qa.questionText)}</dt>
+          <dd>${escapeHtml(qa.answerLabel)}</dd>
+        `).join("")
+      }</dl>`
+    : `<pre class="kv">(no answers recorded)</pre>`;
+
   return `
 <div class="row">
   <details>
@@ -343,8 +402,8 @@ function renderRow(s) {
       <h3>Description</h3>
       <pre>${escapeHtml(s.description)}</pre>
       ${s.message ? `<h3>Their message</h3><pre>${escapeHtml(s.message)}</pre>` : ""}
-      <h3>Answers</h3>
-      <pre class="kv">${escapeHtml(answers)}</pre>
+      <h3>Q&amp;A</h3>
+      ${qaHtml}
       <h3>Estimate shown</h3>
       <pre class="kv">${est}${s.estimate?.timeline ? `\nTimeline: ${escapeHtml(s.estimate.timeline)}` : ""}${s.estimate?.summary ? `\nSummary: ${escapeHtml(s.estimate.summary)}` : ""}</pre>
       <h3>Meta</h3>

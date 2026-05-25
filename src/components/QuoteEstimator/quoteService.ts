@@ -77,12 +77,13 @@ export async function generateQuestions(
 export async function generateEstimate(
     description: string,
     answers: Answers,
+    questions: ClarifyingQuestion[],
     locale: string,
     signal?: AbortSignal
 ): Promise<QuoteEstimate> {
     const { jobId } = await startJob(
         'estimate',
-        { description, answers, locale },
+        { description, answers, questions, locale },
         signal
     )
     const job = await pollJob<QuoteEstimate>(jobId, signal)

@@ -41,8 +41,10 @@ export default function QuoteEstimator() {
     const [contactError, setContactError] = useState<string | null>(null)
 
     const allChoiceAnswered = useMemo(() => {
+        // Allow proceeding when every multiple-choice question is answered.
+        // If the AI returned zero choice questions, there's nothing to wait on.
         const choiceQs = questions.filter((q) => q.type === 'choice')
-        return choiceQs.length > 0 && choiceQs.every((q) => !!answers[q.id])
+        return choiceQs.every((q) => !!answers[q.id])
     }, [questions, answers])
 
     const isThinking = phase === 'thinking-q' || phase === 'thinking-e'
@@ -71,7 +73,7 @@ export default function QuoteEstimator() {
     async function onGetEstimate() {
         setPhase('thinking-e')
         try {
-            const r = await generateEstimate(description, answers, locale)
+            const r = await generateEstimate(description, answers, questions, locale)
             // generateEstimate attaches jobId onto the response for the submit step
             const j = (r as QuoteEstimate & { jobId?: string }).jobId
             if (j) setJobId(j)
