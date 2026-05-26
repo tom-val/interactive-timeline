@@ -357,6 +357,12 @@ function renderAdminHtml(items) {
   .qa dt { font-weight:600; color: var(--ink); font-size:0.88rem; margin-top:8px; }
   .qa dt:first-of-type { margin-top:0; }
   .qa dd { margin: 2px 0 0; padding: 4px 10px; background:#f5f5f5; border-radius:4px; font-size:0.88rem; color: var(--muted); display:inline-block; }
+  .estimate-box { background: linear-gradient(135deg, #111 0%, #2a2a2a 100%); color:#fff; padding: 14px 16px; border-radius: 8px; }
+  .estimate-box .estimate-range { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.3px; }
+  .estimate-box .estimate-meta { font-size: 0.86rem; color: rgba(255,255,255,0.7); margin-top: 3px; }
+  .breakdown { margin-top: 12px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.15); font-size: 0.84rem; color: rgba(255,255,255,0.8); }
+  .breakdown-row { display:flex; justify-content: space-between; padding: 3px 0; gap: 12px; }
+  .breakdown-row span:last-child { font-variant-numeric: tabular-nums; white-space: nowrap; }
   .empty { color: var(--muted); text-align:center; padding:60px 0; }
 </style>
 </head>
@@ -368,6 +374,17 @@ function renderAdminHtml(items) {
 </main>
 </body>
 </html>`;
+}
+
+function renderBreakdown(items) {
+  if (!Array.isArray(items) || items.length === 0) return "";
+  const rows = items.map((item) => {
+    const right = (item.value === null || item.value === undefined) && item.mult
+      ? `×${escapeHtml(String(item.mult))}`
+      : `€${escapeHtml(String(item.value ?? 0))}`;
+    return `<div class="breakdown-row"><span>${escapeHtml(item.label || "")}</span><span>${right}</span></div>`;
+  }).join("");
+  return `<div class="breakdown">${rows}</div>`;
 }
 
 function renderRow(s) {
@@ -405,7 +422,12 @@ function renderRow(s) {
       <h3>Q&amp;A</h3>
       ${qaHtml}
       <h3>Estimate shown</h3>
-      <pre class="kv">${est}${s.estimate?.timeline ? `\nTimeline: ${escapeHtml(s.estimate.timeline)}` : ""}${s.estimate?.summary ? `\nSummary: ${escapeHtml(s.estimate.summary)}` : ""}</pre>
+      <div class="estimate-box">
+        <div class="estimate-range">${est}</div>
+        ${s.estimate?.timeline ? `<div class="estimate-meta">Timeline: ${escapeHtml(s.estimate.timeline)}</div>` : ""}
+        ${s.estimate?.summary ? `<div class="estimate-meta">${escapeHtml(s.estimate.summary)}</div>` : ""}
+        ${renderBreakdown(s.estimate?.items)}
+      </div>
       <h3>Meta</h3>
       <pre class="kv">submissionId: ${escapeHtml(s.submissionId)}
 jobId:        ${escapeHtml(s.jobId)}
