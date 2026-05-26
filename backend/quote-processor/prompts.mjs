@@ -42,6 +42,12 @@ Guidance:
   unclear and that meaningfully affect cost — e.g. payments, accounts/auth,
   admin panel, integrations, hosting, mobile-native, content-assets readiness.
 - Total: 2–5 questions max. Fewer is fine. Don't pad.
+- WRITE FOR A NON-TECHNICAL CLIENT. Avoid raw technical abbreviations in the
+  text and labels (PWA, SaaS, MVP, CMS, SSO, OAuth, JWT, i18n, SEO, API, CDN, etc.).
+  Either spell them out plainly ("installable web app" instead of "PWA",
+  "minimum first version" instead of "MVP") or include a short explanation in
+  parentheses right after the term ("PWA (installable web app)"). Same rule for
+  Lithuanian — use plain Lithuanian or short parenthetical explanations.
 - Use kebab-case for ids and option values.
 - Question option values stay in English (machine codes); only labels translate.
 - Translate ALL text fields, labels, and placeholders to the requested locale.
