@@ -38,6 +38,11 @@
         "title": "Kava",
         "desc": "Socialinis kavos dienoraštis. Sekite, ką geriate, vertinkite kavines, matykite, kur geria draugai, ir naršykite naujausių įvykių srautą.",
         "tags": ["Socialinis", "Vietos", "Vertinimai"]
+      },
+      "quiz": {
+        "title": "Kaip gerai pažįsti…?",
+        "desc": "Sukurkite viktoriną, pasidalinkite ja su draugais ir pažiūrėkite, kaip gerai jie atspės jūsų atsakymus. Pabandykite atspėti, ką kiti pasakys.",
+        "tags": ["Viktorina", "Socialinis", "Žaidimas"]
       }
     }
   },

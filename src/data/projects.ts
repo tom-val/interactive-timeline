@@ -5,7 +5,7 @@
  */
 
 export interface FeaturedProject {
-    id: 'atiduosiu' | 'finances' | 'food' | 'coffee'
+    id: 'atiduosiu' | 'finances' | 'food' | 'coffee' | 'quiz'
     url: string
     /** Filename in /public/screenshots/. Falsy = show placeholder. */
     screenshot?: string
@@ -49,6 +49,13 @@ export const FEATURED_PROJECTS: FeaturedProject[] = [
         screenshot: 'coffee.png',
         placeholderEmoji: '☕',
         placeholderClass: 'thumb-coff',
+    },
+    {
+        id: 'quiz',
+        url: 'https://quiz.valiunas.dev',
+        screenshot: 'how-well.png',
+        placeholderEmoji: '❓',
+        placeholderClass: 'thumb-quiz',
     },
 ]
 

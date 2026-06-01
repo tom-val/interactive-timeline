@@ -75,6 +75,9 @@
 .thumb-coff {
     background: linear-gradient(135deg, #6f4e37, #3e2723);
 }
+.thumb-quiz {
+    background: linear-gradient(135deg, #6f4ea8, #4527a0);
+}
 
 .card-body {
     padding: 18px 20px 16px;

@@ -38,6 +38,11 @@
         "title": "Coffee log",
         "desc": "Social coffee log. Track what you drink, rate cafés, see where friends are drinking, and browse a feed of recent check-ins.",
         "tags": ["Social", "Geolocation", "Ratings"]
+      },
+      "quiz": {
+        "title": "How well do you know…?",
+        "desc": "Create a quiz, share it with friends, and see how well they can predict your answers. Try to guess what others will say.",
+        "tags": ["Quiz", "Social", "Multiplayer"]
       }
     }
   },
