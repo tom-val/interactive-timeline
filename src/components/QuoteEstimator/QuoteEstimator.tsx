@@ -274,6 +274,14 @@ export default function QuoteEstimator() {
                                     <span>{estimate.summary}</span>
                                 </div>
                             </div>
+                            {estimate.note && estimate.note.trim().length > 0 && (
+                                <div className="estimate-note">
+                                    <span className="ai-badge ai-badge-dark">
+                                        {t('quote.aiBadge')}
+                                    </span>
+                                    <span>{estimate.note}</span>
+                                </div>
+                            )}
                             {phase === 'estimate' && (
                                 <div className="estimate-actions">
                                     <button

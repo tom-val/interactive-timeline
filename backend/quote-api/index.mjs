@@ -269,6 +269,9 @@ function formatSnsMessage(s) {
       `Estimate shown:  €${s.estimate.low ?? "?"} – €${s.estimate.high ?? "?"}`,
       `Timeline shown:  ${s.estimate.timeline ?? "?"}`,
     );
+    if (s.estimate.note && String(s.estimate.note).trim()) {
+      lines.push(`AI note:         ${s.estimate.note}`);
+    }
   }
   if (Array.isArray(s.qa) && s.qa.length) {
     lines.push("", `Q&A:`);
@@ -363,6 +366,7 @@ function renderAdminHtml(items) {
   .breakdown { margin-top: 12px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.15); font-size: 0.84rem; color: rgba(255,255,255,0.8); }
   .breakdown-row { display:flex; justify-content: space-between; padding: 3px 0; gap: 12px; }
   .breakdown-row span:last-child { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .estimate-box .estimate-note { margin-top: 12px; padding: 10px 12px; background: rgba(255,255,255,0.06); border-left: 3px solid rgba(160,75,179,0.7); border-radius: 4px; font-size: 0.86rem; line-height: 1.5; color: rgba(255,255,255,0.88); }
   .empty { color: var(--muted); text-align:center; padding:60px 0; }
 </style>
 </head>
@@ -427,6 +431,7 @@ function renderRow(s) {
         ${s.estimate?.timeline ? `<div class="estimate-meta">Timeline: ${escapeHtml(s.estimate.timeline)}</div>` : ""}
         ${s.estimate?.summary ? `<div class="estimate-meta">${escapeHtml(s.estimate.summary)}</div>` : ""}
         ${renderBreakdown(s.estimate?.items)}
+        ${s.estimate?.note ? `<div class="estimate-note">${escapeHtml(s.estimate.note)}</div>` : ""}
       </div>
       <h3>Meta</h3>
       <pre class="kv">submissionId: ${escapeHtml(s.submissionId)}

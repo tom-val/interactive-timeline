@@ -41,6 +41,8 @@ export interface QuoteEstimate {
     high: number
     timeline: string
     summary: string
+    /** Optional short comment from the AI (e.g. flagging massive scope). */
+    note?: string
     items: BreakdownItem[]
 }
 

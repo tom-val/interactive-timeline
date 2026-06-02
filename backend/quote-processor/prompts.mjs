@@ -66,6 +66,7 @@ Output VALID JSON ONLY, no prose, matching this exact schema:
   "high":    <integer EUR>,
   "timeline": "<human-readable range, e.g. 4–6 weeks>",
   "summary":  "<one-line summary of scope>",
+  "note":    "<optional 1–2 sentence comment to the client (or empty string)>",
   "items": [
     { "label": "Base — Full web app", "value": 2400 },
     { "label": "Payments — Stripe one-off", "value": 1200 },
@@ -128,6 +129,19 @@ Rules:
   client explicitly asked for custom or rich design, or when the project type
   (e.g. e-commerce, marketplace) benefits significantly from custom design.
   Likewise, skip the timeline-multiplier line when the multiplier is exactly 1.0.
+- Include a "note" field with a SHORT (1–2 sentences, max 280 chars), friendly,
+  honest comment to the client when context is important. Examples of when to
+  include a note:
+    * Massive scope: "Building a real social network is a multi-team, multi-year
+      effort. As a single freelancer I can deliver an MVP prototype to validate
+      the idea, but reaching production scale needs a full engineering team."
+    * Very simple project: "This is a small fixed-scope job — happy to add an
+      admin view or contact form later if you need them."
+    * Ambiguous scope: "I assumed [X]. If you actually need [Y], the estimate
+      changes meaningfully."
+  If the project is normal and the estimate is self-explanatory, leave "note"
+  as an empty string.
+- The note must be in the requested locale.
 - Be HONEST about massive scope. If the client is describing a project that
   realistically needs a team and years (a social network, ride-sharing
   platform, full SaaS suite, generic "another Facebook"), price it like
