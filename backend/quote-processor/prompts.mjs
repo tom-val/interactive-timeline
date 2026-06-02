@@ -75,12 +75,17 @@ Output VALID JSON ONLY, no prose, matching this exact schema:
 
 Pricing reference (use as guidance, not rigid rules):
   Base by scope:
-    landing / one-pager:        €400–700
-    web app (logged-in users):  €1800–2400
-    e-commerce / marketplace:   €3000–4000
-    dashboard / internal tool:  €2200–2800
+    static one-pager (no forms):   €200–400
+    landing with a form / RSVP:    €300–500
+    web app (logged-in users):     €1800–2400
+    e-commerce / marketplace:      €3000–4000
+    dashboard / internal tool:     €2200–2800
   Complexity multiplier (apply to base):
-    simple: 1.0  · medium: 1.7  · complex: 2.8
+    trivial: 0.7   (single static page, fixed content, no logic)
+    simple:  1.0
+    medium:  1.7
+    complex: 2.8
+    massive: 5–10+ (cross-team scope: large platforms, social networks, etc.)
   Feature add-ons (rough, in EUR):
     payments oneoff:    €700–1200 (lower for stripe checkout, higher for full custom flow)
     payments subs:      €1200–1800
@@ -98,18 +103,36 @@ Pricing reference (use as guidance, not rigid rules):
   Final low/high range ≈ total × 0.85 to total × 1.30, rounded to nearest 100.
 
 Calibration examples (typical totals, not floors):
-  - Wedding invitation with RSVP form + simple admin list:    €800–1500
-  - Single product landing page with Stripe checkout:         €1000–1800
-  - Restaurant landing page, gallery, contact form:           €500–900
+  - Plain static personal/business page, no forms:            €250–500
+  - Wedding invitation, static page + one RSVP form:          €300–550
+  - Wedding invitation + simple admin list to track RSVPs:    €600–1000
+  - Restaurant landing page, gallery, contact form:           €400–800
+  - Single product landing page with Stripe checkout:         €900–1600
   - Booking site with calendar, deposits, admin:              €2500–4500
   - Marketplace with payments + multi-seller payouts:         €5000–9000
+  - "Build me another Facebook / Instagram / Uber":           €200,000+
+        (NOT a freelancer project — surface the price honestly so the
+        client understands the actual scale, and the breakdown should
+        note that a team and multi-year roadmap are required)
 
 Rules:
 - low and high MUST be integers (rounded to nearest 100). low < high.
-- Be CONSERVATIVE — clients are price-sensitive, and you can always raise after
-  scoping. Bias toward the low end of the reference ranges. Don't stack add-ons
-  that overlap with the base scope (e.g. a "RSVP form" line is already part of a
-  wedding invitation base; don't bill it separately).
+- Be CONSERVATIVE on small/simple work — clients are price-sensitive, and you
+  can always raise after scoping. For trivial and simple scopes, bias toward
+  the LOW end of the reference ranges. Don't stack add-ons that overlap with
+  the base scope (e.g. a "RSVP form" line is already part of a wedding
+  invitation base; don't bill it separately).
+- For SIMPLE LANDING PAGES (one or two pages, one form, no logged-in users):
+  fold the basic design effort into the base price — do NOT add a separate
+  "Design — basic" line item. A "Design" line should only appear when the
+  client explicitly asked for custom or rich design, or when the project type
+  (e.g. e-commerce, marketplace) benefits significantly from custom design.
+  Likewise, skip the timeline-multiplier line when the multiplier is exactly 1.0.
+- Be HONEST about massive scope. If the client is describing a project that
+  realistically needs a team and years (a social network, ride-sharing
+  platform, full SaaS suite, generic "another Facebook"), price it like
+  that — six figures and up. Don't lowball to be polite. Add an item that
+  acknowledges the multi-team / multi-year reality.
 - timeline is a human-readable range string (e.g. "5–8 weeks").
 - Each item.value is integer EUR OR null (use null + mult for multipliers).
 - Use 3–5 items maximum in the breakdown. Group small things into the base.
