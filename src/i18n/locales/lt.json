@@ -43,6 +43,11 @@
         "title": "Kaip gerai pažįsti…?",
         "desc": "Sukurkite viktoriną, pasidalinkite ja su draugais ir pažiūrėkite, kaip gerai jie atspės jūsų atsakymus. Pabandykite atspėti, ką kiti pasakys.",
         "tags": ["Viktorina", "Socialinis", "Žaidimas"]
+      },
+      "whopays": {
+        "title": "Kieno eilė mokėti?",
+        "desc": "Seka, kieno eilė mokėti draugų kompanijoje. Išspręskite klausimą „kas šiandien perka kavą?“ — be reikalo mintinai sekti, kas kiek pirko.",
+        "tags": ["Grupė", "Sekimas", "Sąžiningas dalinimasis"]
       }
     }
   },

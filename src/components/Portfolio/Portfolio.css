@@ -78,6 +78,9 @@
 .thumb-quiz {
     background: linear-gradient(135deg, #6f4ea8, #4527a0);
 }
+.thumb-whopays {
+    background: linear-gradient(135deg, #00897b, #004d40);
+}
 
 .card-body {
     padding: 18px 20px 16px;

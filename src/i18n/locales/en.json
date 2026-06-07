@@ -43,6 +43,11 @@
         "title": "How well do you know…?",
         "desc": "Create a quiz, share it with friends, and see how well they can predict your answers. Try to guess what others will say.",
         "tags": ["Quiz", "Social", "Multiplayer"]
+      },
+      "whopays": {
+        "title": "Who pays?",
+        "desc": "Tracks whose turn it is to pay among a group of friends. Settle the question of \"who's buying coffee today?\" without keeping score in your head.",
+        "tags": ["Group", "Tracking", "Fair-share"]
       }
     }
   },
