@@ -46,8 +46,8 @@
       },
       "whopays": {
         "title": "Who pays?",
-        "desc": "Tracks whose turn it is to pay among a group of friends. Settle the question of \"who's buying coffee today?\" without keeping score in your head.",
-        "tags": ["Group", "Tracking", "Fair-share"]
+        "desc": "Tracks whose turn it is to pay — built first for couples, also handy for friend groups. Settle the \"whose round is it?\" question without keeping a tally in your head.",
+        "tags": ["Couples", "Tracking", "Fair-share"]
       }
     }
   },

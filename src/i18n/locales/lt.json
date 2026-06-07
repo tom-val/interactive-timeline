@@ -46,8 +46,8 @@
       },
       "whopays": {
         "title": "Kieno eilė mokėti?",
-        "desc": "Seka, kieno eilė mokėti draugų kompanijoje. Išspręskite klausimą „kas šiandien perka kavą?“ — be reikalo mintinai sekti, kas kiek pirko.",
-        "tags": ["Grupė", "Sekimas", "Sąžiningas dalinimasis"]
+        "desc": "Seka, kieno eilė mokėti — visų pirma sukurta poroms, tinka ir draugų kompanijai. Atsakykite į klausimą „kieno eilė šįkart?“ — be reikalo mintinai sekti, kas kiek pirko.",
+        "tags": ["Poroms", "Sekimas", "Sąžiningas dalinimasis"]
       }
     }
   },
