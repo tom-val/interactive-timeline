@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro'
+import Home from '../components/Home/Home.astro'
+import { PERSON_JSON_LD } from '../data/jsonld'
+import { useTranslations } from '../i18n'
+
+const t = useTranslations('en')
+---
+
+<Base
+    lang="en"
+    path="/"
+    title={t('meta.home.title')}
+    description={t('meta.home.description')}
+    jsonLd={PERSON_JSON_LD}
+>
+    <Home lang="en" />
+</Base>

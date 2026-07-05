@@ -1,0 +1,16 @@
+---
+import Base from '../../layouts/Base.astro'
+import TimelinePage from '../../components/Timeline/TimelinePage.astro'
+import { useTranslations } from '../../i18n'
+
+const t = useTranslations('lt')
+---
+
+<Base
+    lang="lt"
+    path="/timeline/"
+    title={t('meta.timeline.title')}
+    description={t('meta.timeline.description')}
+>
+    <TimelinePage lang="lt" />
+</Base>

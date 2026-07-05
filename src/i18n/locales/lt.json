@@ -8,7 +8,7 @@
   "hero": {
     "role": "Programuotojas",
     "greeting": "Sveiki, aš Tomas.",
-    "lead": "Kuriu praktiškas internetines programas nuo pradžios iki galo — nuo mokėjimų integracijų ir administracinių įrankių iki mažų vienkartinių formų. Iš Lietuvos, atviras pasirinktiems projektams.",
+    "lead": "Kuriu praktiškas internetines programas nuo pradžios iki galo — nuo mokėjimų integracijų ir administracinių įrankių iki mažų vienkartinių formų.",
     "ctaQuote": "Gauti projekto kainos pasiūlymą",
     "ctaTimeline": "Mano karjeros istorija →",
     "elsewhere": "Rasti mane kitur"
@@ -316,5 +316,20 @@
       }
     }
   },
-  "footer": "© Tomas Valiūnas"
+  "footer": "© Tomas Valiūnas",
+  "meta": {
+    "home": {
+      "title": "Tomas Valiūnas — programuotojas | Svetainės ir mokėjimų integracijos",
+      "description": "Programuotojas, kuriantis praktiškas internetines sistemas nuo A iki Z — mokėjimų integracijos, administravimo įrankiai, registracijos formos. Aprašykite projektą ir per kelias minutes gaukite preliminarų įkainį."
+    },
+    "timeline": {
+      "title": "Karjeros kelias — Tomas Valiūnas",
+      "description": "Programuotojo Tomo Valiūno karjeros kelias — nuo Kauno technologijos universiteto iki Visma, Devbridge ir Railsr."
+    }
+  },
+  "notFound": {
+    "title": "Puslapis nerastas",
+    "body": "Tokio puslapio nėra.",
+    "back": "Grįžti į pradžią"
+  }
 }

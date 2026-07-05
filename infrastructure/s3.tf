@@ -3,7 +3,7 @@ resource "aws_s3_bucket" "cv_page" {
   force_destroy = "false"
   website {
     index_document = "index.html"
-    error_document = "error.html"
+    error_document = "404.html"
   }
   acl = "public-read"
 }

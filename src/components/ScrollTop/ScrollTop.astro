@@ -1,0 +1,29 @@
+---
+// Floating "back to top" button. Styles live in global.css (.scroll-top).
+---
+
+<button class="scroll-top" aria-label="Scroll back to top" title="Back to top">
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        fill="currentColor"
+        aria-hidden="true"
+    >
+        <path d="M7.41 15.41 12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path>
+    </svg>
+</button>
+
+<script>
+    const btn = document.querySelector<HTMLButtonElement>('.scroll-top')
+    if (btn) {
+        const onScroll = () =>
+            btn.classList.toggle('scroll-top--visible', window.scrollY > 100)
+        window.addEventListener('scroll', onScroll, { passive: true })
+        onScroll()
+        btn.addEventListener('click', () =>
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+        )
+    }
+</script>
