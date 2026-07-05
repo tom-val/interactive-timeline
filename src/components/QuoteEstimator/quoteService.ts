@@ -11,7 +11,7 @@
  *   POST /api/quote/submit     { jobId, name, email, message? }     → { ok }
  */
 
-const API_BASE = process.env.REACT_APP_QUOTE_API_URL || '/api'
+const API_BASE = import.meta.env.PUBLIC_QUOTE_API_URL || '/api'
 
 export type QuestionId = string
 

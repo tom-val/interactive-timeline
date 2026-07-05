@@ -1,0 +1,79 @@
+---
+import './TimeLineEntry.css'
+import type { DialogData } from '../../dto/data'
+
+interface Props {
+    header: string
+    time: string
+    content: string[]
+    dialogData: DialogData[]
+    readMoreLabel: string
+    showLessLabel: string
+}
+
+const { header, time, content, dialogData, readMoreLabel, showLessLabel } =
+    Astro.props
+const hasMore = dialogData && dialogData.length > 0
+---
+
+<article class="entry">
+    <div class="entry-date">{time}</div>
+    <h3 class="entry-header">{header}</h3>
+    <div class="entry-body">
+        {content.map((line) => <p>{line}</p>)}
+
+        {
+            hasMore && (
+                <div class="entry-extended" aria-hidden="true">
+                    <div class="entry-extended-inner">
+                        {dialogData.map((d) => (
+                            <>
+                                {d.text && <p>{d.text}</p>}
+                                {d.list && d.list.length > 0 && (
+                                    <ul>
+                                        {d.list.map((item) => (
+                                            <li>{item}</li>
+                                        ))}
+                                    </ul>
+                                )}
+                                {d.secondText && <p>{d.secondText}</p>}
+                            </>
+                        ))}
+                    </div>
+                </div>
+            )
+        }
+
+        {
+            hasMore && (
+                <button
+                    type="button"
+                    class="entry-toggle"
+                    aria-expanded="false"
+                    data-read-more={readMoreLabel}
+                    data-show-less={showLessLabel}
+                >
+                    {readMoreLabel}
+                </button>
+            )
+        }
+    </div>
+</article>
+
+<script>
+    // Astro dedupes this script — it runs once per page for all entries.
+    document.querySelectorAll<HTMLButtonElement>('.entry-toggle').forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const extended = btn
+                .closest('.entry')
+                ?.querySelector('.entry-extended')
+            if (!extended) return
+            const open = extended.classList.toggle('entry-extended-open')
+            extended.setAttribute('aria-hidden', String(!open))
+            btn.setAttribute('aria-expanded', String(open))
+            btn.textContent = open
+                ? btn.dataset.showLess ?? ''
+                : btn.dataset.readMore ?? ''
+        })
+    })
+</script>

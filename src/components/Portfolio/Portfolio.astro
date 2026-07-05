@@ -1,0 +1,68 @@
+---
+import './Portfolio.css'
+import { FEATURED_PROJECTS } from '../../data/projects'
+import { lookup, useTranslations, type SupportedLanguage } from '../../i18n'
+
+interface Props {
+    lang: SupportedLanguage
+}
+
+const { lang } = Astro.props
+const t = useTranslations(lang)
+
+function tagsFor(id: string): string[] {
+    const raw = lookup(lang, `portfolio.projects.${id}.tags`)
+    return Array.isArray(raw) ? (raw as string[]) : []
+}
+---
+
+<section class="section portfolio">
+    <h2 class="section-title">{t('portfolio.title')}</h2>
+    <p class="section-subhead">{t('portfolio.subhead')}</p>
+
+    <div class="portfolio-grid">
+        {
+            FEATURED_PROJECTS.map((p) => {
+                const title = t(`portfolio.projects.${p.id}.title`)
+                return (
+                    <article class="card">
+                        <div
+                            class={`thumb ${
+                                p.screenshot ? '' : `placeholder ${p.placeholderClass}`
+                            }`}
+                        >
+                            {p.screenshot ? (
+                                <img
+                                    src={`/screenshots/${p.screenshot}`}
+                                    alt={`${title} screenshot`}
+                                    loading="lazy"
+                                />
+                            ) : (
+                                <>
+                                    <span class="badge-todo">
+                                        {t('portfolio.screenshotPending')}
+                                    </span>
+                                    <span class="thumb-emoji">{p.placeholderEmoji}</span>
+                                </>
+                            )}
+                        </div>
+                        <div class="card-body">
+                            <h3>{title}</h3>
+                            <p class="card-desc">{t(`portfolio.projects.${p.id}.desc`)}</p>
+                            <div class="card-tags">
+                                {tagsFor(p.id).map((tag) => (
+                                    <span>{tag}</span>
+                                ))}
+                            </div>
+                            <div class="card-links">
+                                <a href={p.url} target="_blank" rel="noreferrer">
+                                    {t('portfolio.visit')}
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                )
+            })
+        }
+    </div>
+</section>

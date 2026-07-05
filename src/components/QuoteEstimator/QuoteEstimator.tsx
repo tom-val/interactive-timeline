@@ -1,14 +1,8 @@
 import { useMemo, useState } from 'react'
-import { useTranslation } from 'react-i18next'
 
-import {
-    Answers,
-    ClarifyingQuestion,
-    QuoteEstimate,
-    generateEstimate,
-    generateQuestions,
-    submitContact,
-} from './quoteService'
+import { useTranslations, type SupportedLanguage } from '../../i18n'
+import type { Answers, ClarifyingQuestion, QuoteEstimate } from './quoteService'
+import { generateEstimate, generateQuestions, submitContact } from './quoteService'
 
 import './QuoteEstimator.css'
 
@@ -22,9 +16,8 @@ type Phase =
     | 'submitting'
     | 'submitted'
 
-export default function QuoteEstimator() {
-    const { t, i18n } = useTranslation()
-    const locale = (i18n.resolvedLanguage || i18n.language || 'en').slice(0, 2)
+export default function QuoteEstimator({ locale }: { locale: SupportedLanguage }) {
+    const t = useTranslations(locale)
 
     const [phase, setPhase] = useState<Phase>('idle')
     const [description, setDescription] = useState('')

@@ -6,6 +6,9 @@
 }
 
 .lang-btn {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
     min-width: 36px;
     padding: 5px 12px;
     font-family: inherit;
@@ -24,6 +27,7 @@
 .lang-btn:hover {
     background: rgba(255, 255, 255, 0.18);
     color: #fff;
+    text-decoration: none;
 }
 
 .lang-btn--active {

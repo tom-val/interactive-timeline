@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro'
+import { useTranslations } from '../i18n'
+
+const t = useTranslations('en')
+const lt = useTranslations('lt')
+---
+
+<Base
+    lang="en"
+    path="/"
+    title={`${t('notFound.title')} — Tomas Valiūnas`}
+    description={t('notFound.body')}
+    noindex
+>
+    <main class="app-container">
+        <section class="section" style="text-align: center;">
+            <h1>404</h1>
+            <p>{t('notFound.body')}</p>
+            <p lang="lt">{lt('notFound.body')}</p>
+            <p>
+                <a href="/" class="btn btn-primary">{t('notFound.back')}</a>
+            </p>
+        </section>
+    </main>
+</Base>

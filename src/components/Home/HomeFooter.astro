@@ -1,0 +1,26 @@
+---
+import { useTranslations, type SupportedLanguage } from '../../i18n'
+
+interface Props {
+    lang: SupportedLanguage
+}
+
+const { lang } = Astro.props
+const t = useTranslations(lang)
+---
+
+<footer class="home-footer">
+    {t('footer')} ·
+    <a href="mailto:tomas@valiunas.dev">tomas@valiunas.dev</a> ·
+    <a href="https://github.com/tom-val" target="_blank" rel="noreferrer">
+        {t('nav.github')}
+    </a>
+    ·
+    <a
+        href="https://www.linkedin.com/in/tomas-valiunas-5a5a85114/"
+        target="_blank"
+        rel="noreferrer"
+    >
+        {t('nav.linkedin')}
+    </a>
+</footer>

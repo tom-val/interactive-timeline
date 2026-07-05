@@ -1,0 +1,48 @@
+---
+import './Menu.css'
+import '../LanguageSwitcher/LanguageSwitcher.css'
+import {
+    SUPPORTED_LANGUAGES,
+    langPrefix,
+    useTranslations,
+    type SupportedLanguage,
+} from '../../i18n'
+
+interface Props {
+    lang: SupportedLanguage
+    /** Locale-independent path with trailing slash, e.g. '/' or '/timeline/'. */
+    path: string
+}
+
+const { lang, path } = Astro.props
+const t = useTranslations(lang)
+const prefix = langPrefix(lang)
+---
+
+<header class="appbar" id="back-to-top-anchor">
+    <a href={`${prefix}/`} class="brand">Tomas Valiūnas</a>
+    <nav class="appbar-nav">
+        <a href={`${prefix}/`} class={path === '/' ? 'active' : undefined}>
+            {t('nav.home')}
+        </a>
+        <a
+            href={`${prefix}/timeline/`}
+            class={path === '/timeline/' ? 'active' : undefined}
+        >
+            {t('nav.timeline')}
+        </a>
+    </nav>
+    <div class="lang-switcher" role="group" aria-label="Language">
+        {
+            SUPPORTED_LANGUAGES.map((l) => (
+                <a
+                    href={langPrefix(l) + path}
+                    class={`lang-btn ${l === lang ? 'lang-btn--active' : ''}`}
+                    aria-current={l === lang ? 'true' : undefined}
+                >
+                    {l.toUpperCase()}
+                </a>
+            ))
+        }
+    </div>
+</header>

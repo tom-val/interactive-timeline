@@ -1,0 +1,21 @@
+---
+import './TimelinePage.css'
+import Timeline from './Timeline.astro'
+import { useTranslations, type SupportedLanguage } from '../../i18n'
+
+interface Props {
+    lang: SupportedLanguage
+}
+
+const { lang } = Astro.props
+const t = useTranslations(lang)
+---
+
+<main class="app-container">
+    <section class="page-head">
+        <span class="page-eyebrow">{t('timelinePage.eyebrow')}</span>
+        <h1>{t('timelinePage.title')}</h1>
+        <p>{t('timelinePage.subhead')}</p>
+    </section>
+    <Timeline lang={lang} />
+</main>

@@ -1,0 +1,43 @@
+---
+import './Timeline.css'
+import TimeLineEntry from '../TimelineEntry/TimeLineEntry.astro'
+import { TIMELINE_ENTRY_IDS } from '../../data/timelineEntries'
+import type { DialogData } from '../../dto/data'
+import { lookup, useTranslations, type SupportedLanguage } from '../../i18n'
+
+interface Props {
+    lang: SupportedLanguage
+}
+
+const { lang } = Astro.props
+const t = useTranslations(lang)
+
+// Newest first
+const entries = [...TIMELINE_ENTRY_IDS].reverse()
+
+function asStringArray(value: unknown): string[] {
+    return Array.isArray(value) ? (value as string[]) : []
+}
+
+function asDialogData(value: unknown): DialogData[] {
+    return Array.isArray(value) ? (value as DialogData[]) : []
+}
+---
+
+<div class="timeline">
+    {
+        entries.map((id) => {
+            const base = `timeline.entries.${id}`
+            return (
+                <TimeLineEntry
+                    header={t(`${base}.header`)}
+                    time={t(`${base}.time`)}
+                    content={asStringArray(lookup(lang, `${base}.contentLines`))}
+                    dialogData={asDialogData(lookup(lang, `${base}.dialogData`))}
+                    readMoreLabel={t('timelinePage.readMore')}
+                    showLessLabel={t('timelinePage.showLess')}
+                />
+            )
+        })
+    }
+</div>

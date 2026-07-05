@@ -1,0 +1,22 @@
+---
+import Hero from '../Hero/Hero.astro'
+import Portfolio from '../Portfolio/Portfolio.astro'
+import SmallProjects from '../SmallProjects/SmallProjects.astro'
+import HomeFooter from './HomeFooter.astro'
+import QuoteEstimator from '../QuoteEstimator/QuoteEstimator'
+import type { SupportedLanguage } from '../../i18n'
+
+interface Props {
+    lang: SupportedLanguage
+}
+
+const { lang } = Astro.props
+---
+
+<main class="app-container">
+    <Hero lang={lang} />
+    <Portfolio lang={lang} />
+    <SmallProjects lang={lang} />
+    <QuoteEstimator client:visible locale={lang} />
+    <HomeFooter lang={lang} />
+</main>

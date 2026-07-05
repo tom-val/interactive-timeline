@@ -1,0 +1,39 @@
+---
+import './SmallProjects.css'
+import { SMALL_PROJECTS } from '../../data/projects'
+import { useTranslations, type SupportedLanguage } from '../../i18n'
+
+interface Props {
+    lang: SupportedLanguage
+}
+
+const { lang } = Astro.props
+const t = useTranslations(lang)
+---
+
+<section class="section">
+    <h2 class="section-title">{t('smallProjects.title')}</h2>
+    <p class="section-subhead">{t('smallProjects.subhead')}</p>
+
+    <div class="small-grid">
+        {
+            SMALL_PROJECTS.map((p) => (
+                <div class="small-card">
+                    <div class={`ico ${p.placeholderClass}`}>{p.placeholderEmoji}</div>
+                    <div>
+                        <h4>{t(`smallProjects.${p.id}.title`)}</h4>
+                        <p>{t(`smallProjects.${p.id}.desc`)}</p>
+                        <a
+                            class="small-link"
+                            href={p.url}
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            {new URL(p.url).host} ↗
+                        </a>
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+</section>

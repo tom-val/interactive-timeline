@@ -316,5 +316,20 @@
       }
     }
   },
-  "footer": "© Tomas Valiūnas"
+  "footer": "© Tomas Valiūnas",
+  "meta": {
+    "home": {
+      "title": "Tomas Valiūnas — Software Developer in Lithuania | Web Apps & Payment Integrations",
+      "description": "Software developer building pragmatic web apps end-to-end — payment integrations, admin tooling, booking and registration forms. Describe your project and get an indicative estimate in minutes."
+    },
+    "timeline": {
+      "title": "Career Timeline — Tomas Valiūnas",
+      "description": "The career path of software developer Tomas Valiūnas — from Kaunas University of Technology through Visma, Devbridge, and Railsr."
+    }
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "The page you're looking for doesn't exist.",
+    "back": "Back to home"
+  }
 }

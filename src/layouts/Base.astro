@@ -1,0 +1,83 @@
+---
+import '@fontsource/roboto'
+import '@fontsource/raleway/300.css'
+import '@fontsource/raleway/400.css'
+import '@fontsource/raleway/600.css'
+import '@fontsource/raleway/700.css'
+import '@fontsource/montserrat'
+import '../styles/global.css'
+
+import Menu from '../components/Menu/Menu.astro'
+import ScrollTop from '../components/ScrollTop/ScrollTop.astro'
+import {
+    SUPPORTED_LANGUAGES,
+    langPrefix,
+    type SupportedLanguage,
+} from '../i18n'
+
+interface Props {
+    lang: SupportedLanguage
+    /** Locale-independent path with trailing slash, e.g. '/' or '/timeline/'. */
+    path: string
+    title: string
+    description: string
+    /** Optional JSON-LD payload rendered into the head. */
+    jsonLd?: object
+    noindex?: boolean
+}
+
+const { lang, path, title, description, jsonLd, noindex = false } = Astro.props
+
+const site = Astro.site!
+const urlFor = (l: SupportedLanguage) => new URL(langPrefix(l) + path, site).href
+const canonical = urlFor(lang)
+const ogImage = new URL('/tomas-valiunas.jpg', site).href
+---
+
+<!doctype html>
+<html lang={lang}>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#e91e63" />
+        <link rel="icon" href="/tomas_valiunas_qBp_2.ico" />
+        <meta name="generator" content={Astro.generator} />
+
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonical} />
+        {noindex && <meta name="robots" content="noindex" />}
+
+        {
+            !noindex &&
+                SUPPORTED_LANGUAGES.map((l) => (
+                    <link rel="alternate" hreflang={l} href={urlFor(l)} />
+                ))
+        }
+        {!noindex && <link rel="alternate" hreflang="x-default" href={urlFor('en')} />}
+
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Tomas Valiūnas" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonical} />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:locale" content={lang === 'lt' ? 'lt_LT' : 'en_US'} />
+        <meta name="twitter:card" content="summary" />
+
+        {
+            jsonLd && (
+                <script
+                    is:inline
+                    type="application/ld+json"
+                    set:html={JSON.stringify(jsonLd)}
+                />
+            )
+        }
+    </head>
+    <body>
+        <Menu lang={lang} path={path} />
+        <slot />
+        <ScrollTop />
+    </body>
+</html>
