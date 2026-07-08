@@ -17,7 +17,8 @@ export interface FeaturedProject {
 export interface SmallProject {
     id: 'wedding' | 'lemonade'
     url: string
-    placeholderEmoji: string
+    /** Icon rendered by SmallProjects.astro. */
+    icon: 'heart' | 'drink'
     placeholderClass: string
 }
 
@@ -70,13 +71,13 @@ export const SMALL_PROJECTS: SmallProject[] = [
     {
         id: 'wedding',
         url: 'https://tomasirugne.click/aiste-18634',
-        placeholderEmoji: '💍',
+        icon: 'heart',
         placeholderClass: 'ico-wed',
     },
     {
         id: 'lemonade',
         url: 'https://lemonade.tomasirugne.click',
-        placeholderEmoji: '🍋',
+        icon: 'drink',
         placeholderClass: 'ico-lem',
     },
 ]
