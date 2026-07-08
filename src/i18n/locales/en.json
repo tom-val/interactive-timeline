@@ -17,8 +17,15 @@
     "title": "Portfolio",
     "subhead": "A few things I've built and run in production.",
     "visit": "Visit site ↗",
+    "googlePlay": "Google Play ↗",
+    "iosSoon": "App Store — coming soon",
     "screenshotPending": "Screenshot pending",
     "projects": {
+      "kindergarten": {
+        "title": "Medelis — kindergarten app",
+        "desc": "Multi-tenant app for kindergartens — daily photo & video feed, announcements, chat, absence calendar, and meal-based invoicing. One codebase for web, Android, and iOS.",
+        "tags": ["Mobile App", "Multi-tenant", "Expo"]
+      },
       "atiduosiu": {
         "title": "Giveaway marketplace",
         "desc": "Marketplace for giving things away. Full Montonio payments integration and automatic shipping label generation.",

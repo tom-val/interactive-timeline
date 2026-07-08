@@ -58,6 +58,20 @@ function tagsFor(id: string): string[] {
                                 <a href={p.url} target="_blank" rel="noreferrer">
                                     {t('portfolio.visit')}
                                 </a>
+                                {p.playStoreUrl && (
+                                    <a
+                                        href={p.playStoreUrl}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        {t('portfolio.googlePlay')}
+                                    </a>
+                                )}
+                                {p.iosPending && (
+                                    <span class="link-soon">
+                                        {t('portfolio.iosSoon')}
+                                    </span>
+                                )}
                             </div>
                         </div>
                     </article>

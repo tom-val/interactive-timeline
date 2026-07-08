@@ -5,8 +5,19 @@
  */
 
 export interface FeaturedProject {
-    id: 'atiduosiu' | 'finances' | 'food' | 'coffee' | 'quiz' | 'whopays'
+    id:
+        | 'kindergarten'
+        | 'atiduosiu'
+        | 'finances'
+        | 'food'
+        | 'coffee'
+        | 'quiz'
+        | 'whopays'
     url: string
+    /** Google Play listing, for projects shipped as mobile apps. */
+    playStoreUrl?: string
+    /** Show an "App Store — coming soon" note next to the links. */
+    iosPending?: boolean
     /** Filename in /public/screenshots/. Falsy = show placeholder. */
     screenshot?: string
     placeholderEmoji: string
@@ -23,6 +34,16 @@ export interface SmallProject {
 }
 
 export const FEATURED_PROJECTS: FeaturedProject[] = [
+    {
+        id: 'kindergarten',
+        url: 'https://medelis.valiunas.dev',
+        playStoreUrl:
+            'https://play.google.com/store/apps/details?id=com.tomval.kindergarten',
+        iosPending: true,
+        screenshot: 'medelis.png',
+        placeholderEmoji: '🌱',
+        placeholderClass: 'thumb-medelis',
+    },
     {
         id: 'atiduosiu',
         url: 'https://atiduosiu.lt',

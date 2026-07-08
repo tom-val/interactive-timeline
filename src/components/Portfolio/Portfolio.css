@@ -81,6 +81,9 @@
 .thumb-whopays {
     background: linear-gradient(135deg, #00897b, #004d40);
 }
+.thumb-medelis {
+    background: linear-gradient(135deg, #5a9e2e, #2f5e1e);
+}
 
 .card-body {
     padding: 18px 20px 16px;
@@ -115,12 +118,17 @@
 }
 .card-links {
     display: flex;
-    gap: 16px;
+    flex-wrap: wrap;
+    gap: 6px 16px;
     font-size: 0.88rem;
     font-weight: 600;
 }
 .card-links .gh {
     color: var(--ink);
+}
+.card-links .link-soon {
+    color: var(--muted);
+    font-weight: 500;
 }
 
 @media (max-width: 720px) {

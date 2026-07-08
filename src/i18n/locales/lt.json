@@ -17,8 +17,15 @@
     "title": "Portfelis",
     "subhead": "Keletas dalykų, kuriuos sukūriau ir prižiūriu produkcijoje.",
     "visit": "Apsilankyti ↗",
+    "googlePlay": "Google Play ↗",
+    "iosSoon": "App Store — netrukus",
     "screenshotPending": "Ekrano nuotrauka netrukus",
     "projects": {
+      "kindergarten": {
+        "title": "Medelis — darželio programėlė",
+        "desc": "Programėlė darželiams — dienos nuotraukų ir vaizdo įrašų srautas, pranešimai, pokalbiai, lankomumo kalendorius ir sąskaitos pagal maitinimus. Vienas kodas web, Android ir iOS platformoms.",
+        "tags": ["Mobili programėlė", "Keli darželiai", "Expo"]
+      },
       "atiduosiu": {
         "title": "Atiduotuvė",
         "desc": "Platforma daiktams atiduoti. Pilna Montonio mokėjimų integracija ir automatinis siuntimo etikečių generavimas.",
