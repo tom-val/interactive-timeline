@@ -19,7 +19,7 @@ import { SYSTEM_QUESTIONS, SYSTEM_ESTIMATE } from "./prompts.mjs";
 
 const JOBS_TABLE = process.env.JOBS_TABLE;
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-const OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-5.5";
+const OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-5.6-terra";
 
 const ddb = DynamoDBDocumentClient.from(new DynamoDBClient({}));
 
