@@ -36,6 +36,12 @@ Guidance:
   description is genuinely ambiguous (e.g. "I want a website for my business" —
   unclear if marketing site or web app).
 - ALWAYS ask about timeline (relaxed / normal / rush) — that always affects price.
+  If the options name durations, keep them realistic for AI-assisted
+  development, which is several times faster than traditional freelance work:
+  simple pages take days to about a week, typical web apps 2–4 weeks, a
+  multi-role web + mobile app 4–6 weeks. Scale relaxed / rush around that
+  (e.g. for a web + mobile app: relaxed 2+ months, normal 1–2 months, rush
+  under 1 month), not the months-long ranges of traditional agencies.
 - ASK about design only if the description doesn't mention having designs ready,
   or if the project type benefits from a custom look.
 - Add 0–3 contextual choice/text questions covering things the description leaves
