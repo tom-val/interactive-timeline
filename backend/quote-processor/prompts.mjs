@@ -97,8 +97,10 @@ Pricing reference (use as guidance, not rigid rules):
     trivial: 0.7   (single static page, fixed content, no logic)
     simple:  1.0
     medium:  1.3
-    complex: 1.7
+    complex: 1.5
     massive: 5–10+ (cross-team scope: large platforms, social networks, etc.)
+  Rate complexity on what the add-ons don't already cover. Don't raise it because
+  of roles, mobile apps, or other features that have their own add-on line.
   Feature add-ons (rough, in EUR):
     payments oneoff:    €150–300 (lower for stripe checkout, higher for full custom flow)
     payments subs:      €250–400
@@ -115,9 +117,16 @@ Pricing reference (use as guidance, not rigid rules):
   Timeline multiplier: relaxed 0.95 / normal 1.0 / rush 1.30–1.40
   Final low/high range ≈ total × 0.85 to total × 1.20.
 
-Calibration examples (typical totals, not floors). These anchor the scale —
-after doing the arithmetic, sanity-check your range against the closest
-example and adjust toward it:
+Calibration examples (final low–high ranges, not floors). The closest example's
+upper bound is a LIMIT for "high":
+  - After the arithmetic, find the closest example. If "high" is above its upper
+    bound, scale the item values down until it fits, so the items still add up
+    to the quoted range. Don't just lower low and high.
+  - Only exceed the limit for scope the example clearly doesn't include (e.g.
+    online payments on the kindergarten app), adding that feature's add-on price,
+    or for a rush multiplier. Name the extra scope in the items.
+  - Stay inside the add-on ranges above; they are not starting points.
+Examples:
   - Plain static personal/business page, no forms:            €100–150
   - Wedding invitation, static page + one RSVP form:          €150–250
   - Wedding invitation + simple admin list to track RSVPs:    €200–300
@@ -126,7 +135,8 @@ example and adjust toward it:
   - Booking site with calendar, deposits, admin:              €700–1000
   - Multi-tenant web + mobile app with several user roles
     (e.g. kindergarten app: parents, teachers, admins,
-    messaging, attendance, photos, Google sign-in):           €1000–1500
+    messaging, attendance, meal invoicing, photos,
+    native iOS + Android apps, Google sign-in):               €1000–1500
   - Marketplace with payments + multi-seller payouts:         €1700–2500
   - "Build me another Facebook / Instagram / Uber":           €200,000+
         (NOT a freelancer project — surface the price honestly so the
