@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 
 import { useTranslations, type SupportedLanguage } from '../../i18n'
 import type { Answers, ClarifyingQuestion, QuoteEstimate } from './quoteService'
@@ -32,6 +32,14 @@ export default function QuoteEstimator({ locale }: { locale: SupportedLanguage }
     const [contactEmail, setContactEmail] = useState('')
     const [contactMessage, setContactMessage] = useState('')
     const [contactError, setContactError] = useState<string | null>(null)
+
+    // Keep anything typed before hydration; the first re-render would otherwise
+    // overwrite it with the empty initial state.
+    const descriptionRef = useRef<HTMLTextAreaElement>(null)
+    useEffect(() => {
+        const typed = descriptionRef.current?.value
+        if (typed) setDescription(typed)
+    }, [])
 
     const allChoiceAnswered = useMemo(() => {
         // Allow proceeding when every multiple-choice question is answered.
@@ -146,6 +154,7 @@ export default function QuoteEstimator({ locale }: { locale: SupportedLanguage }
                 </label>
                 <textarea
                     id="quote-desc"
+                    ref={descriptionRef}
                     className="quote-textarea"
                     placeholder={t('quote.describePlaceholder')}
                     value={description}
