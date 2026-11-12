@@ -18,7 +18,7 @@
     "subhead": "Keletas dalykų, kuriuos sukūriau ir prižiūriu produkcijoje.",
     "visit": "Apsilankyti ↗",
     "googlePlay": "Google Play ↗",
-    "iosSoon": "App Store — netrukus",
+    "appStore": "App Store ↗",
     "screenshotPending": "Ekrano nuotrauka netrukus",
     "projects": {
       "kindergarten": {
@@ -56,18 +56,6 @@
         "desc": "Seka, kieno eilė mokėti — visų pirma sukurta poroms, tinka ir draugų kompanijai. Atsakykite į klausimą „kieno eilė šįkart?“ — be reikalo mintinai sekti, kas kiek pirko.",
         "tags": ["Poroms", "Sekimas", "Sąžiningas dalinimasis"]
       }
-    }
-  },
-  "smallProjects": {
-    "title": "Vienkartiniai projektai ir formos",
-    "subhead": "Mažesni, fokusuoti projektai sukurti per trumpą laiką.",
-    "wedding": {
-      "title": "Vestuvių kvietimas + RSVP",
-      "desc": "Individualus kvietimas su svečių RSVP forma ir administratoriaus skydeliu atsakymams stebėti."
-    },
-    "lemonade": {
-      "title": "Limonado konkurso registracija",
-      "desc": "Vieno puslapio registracijos forma vietiniam limonado gaminimo konkursui."
     }
   },
   "quote": {

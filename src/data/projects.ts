@@ -1,7 +1,7 @@
 /**
  * Project metadata. Static fields (urls, ids, screenshot filenames) live here;
  * translatable copy (title, descriptions, tags) lives in src/i18n/locales/*.json
- * under portfolio.projects.<id> and smallProjects.<id>.
+ * under portfolio.projects.<id>.
  */
 
 export interface FeaturedProject {
@@ -16,20 +16,12 @@ export interface FeaturedProject {
     url: string
     /** Google Play listing, for projects shipped as mobile apps. */
     playStoreUrl?: string
-    /** Show an "App Store — coming soon" note next to the links. */
-    iosPending?: boolean
+    /** App Store listing, for projects shipped as mobile apps. */
+    appStoreUrl?: string
     /** Filename in /public/screenshots/. Falsy = show placeholder. */
     screenshot?: string
     placeholderEmoji: string
     /** CSS class (defined in Portfolio.css) for the placeholder gradient. */
-    placeholderClass: string
-}
-
-export interface SmallProject {
-    id: 'wedding' | 'lemonade'
-    url: string
-    /** Icon rendered by SmallProjects.astro. */
-    icon: 'heart' | 'drink'
     placeholderClass: string
 }
 
@@ -39,7 +31,7 @@ export const FEATURED_PROJECTS: FeaturedProject[] = [
         url: 'https://medelis.valiunas.dev',
         playStoreUrl:
             'https://play.google.com/store/apps/details?id=com.tomval.kindergarten',
-        iosPending: true,
+        appStoreUrl: 'https://apps.apple.com/us/app/medelis/id6783967171',
         screenshot: 'medelis.png',
         placeholderEmoji: '🌱',
         placeholderClass: 'thumb-medelis',
@@ -85,20 +77,5 @@ export const FEATURED_PROJECTS: FeaturedProject[] = [
         screenshot: 'who-pays.png',
         placeholderEmoji: '💸',
         placeholderClass: 'thumb-whopays',
-    },
-]
-
-export const SMALL_PROJECTS: SmallProject[] = [
-    {
-        id: 'wedding',
-        url: 'https://tomasirugne.click/aiste-18634',
-        icon: 'heart',
-        placeholderClass: 'ico-wed',
-    },
-    {
-        id: 'lemonade',
-        url: 'https://lemonade.tomasirugne.click',
-        icon: 'drink',
-        placeholderClass: 'ico-lem',
     },
 ]

@@ -18,7 +18,7 @@
     "subhead": "A few things I've built and run in production.",
     "visit": "Visit site ↗",
     "googlePlay": "Google Play ↗",
-    "iosSoon": "App Store — coming soon",
+    "appStore": "App Store ↗",
     "screenshotPending": "Screenshot pending",
     "projects": {
       "kindergarten": {
@@ -56,18 +56,6 @@
         "desc": "Tracks whose turn it is to pay — built first for couples, also handy for friend groups. Settle the \"whose round is it?\" question without keeping a tally in your head.",
         "tags": ["Couples", "Tracking", "Fair-share"]
       }
-    }
-  },
-  "smallProjects": {
-    "title": "One-pagers & forms",
-    "subhead": "Smaller, focused projects built on tight deadlines.",
-    "wedding": {
-      "title": "Wedding invitation + RSVP",
-      "desc": "Custom invitation with guest RSVP form and an admin dashboard for tracking responses."
-    },
-    "lemonade": {
-      "title": "Lemonade competition registration",
-      "desc": "Single-page registration form for a local lemonade-making competition."
     }
   },
   "quote": {

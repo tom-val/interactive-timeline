@@ -126,10 +126,6 @@
 .card-links .gh {
     color: var(--ink);
 }
-.card-links .link-soon {
-    color: var(--muted);
-    font-weight: 500;
-}
 
 @media (max-width: 720px) {
     .portfolio-grid {

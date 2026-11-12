@@ -67,10 +67,14 @@ function tagsFor(id: string): string[] {
                                         {t('portfolio.googlePlay')}
                                     </a>
                                 )}
-                                {p.iosPending && (
-                                    <span class="link-soon">
-                                        {t('portfolio.iosSoon')}
-                                    </span>
+                                {p.appStoreUrl && (
+                                    <a
+                                        href={p.appStoreUrl}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        {t('portfolio.appStore')}
+                                    </a>
                                 )}
                             </div>
                         </div>
